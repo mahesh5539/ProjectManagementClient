@@ -15,7 +15,7 @@
             src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js"></script>
   <!--  <script src="assets/js/controllers.js"></script>-->
 </head>
-
+<body ng-controller="ProjectCtrl" ng-init="loadProjects()">
 <!--nav bar start-->
 <nav class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
@@ -62,7 +62,7 @@
 
 <!--Model starts here : for creating new project-->
 
-<div class="container">
+<div class="container" >
 
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#myModal"> <span class="glyphicon glyphicon-plus"></span>New Project</button>
@@ -106,7 +106,7 @@
 <!--model ends here-->
 
 <!-- Controller name goes here -->
-<body ng-controller="ProjectCtrl">
+
 
 <table class="table">
     <tr>
@@ -167,33 +167,33 @@
 <script>
     var helloApp = angular.module("projectHomeApp", []);
     helloApp.controller("ProjectCtrl", function($scope) {
-        $scope.projects = [
-            {
-                'title': 'Infy project',
-                'description': 'first project',
-                'state': 'planning'
-            },
-            {
-                'title': 'Cognizant Technologies',
-                'description': 'second project',
-                'state': 'ongoing'
-            },
-            {
-                'title': 'Wipro',
-                'description': 'third project',
-                'state': 'closed'
-            },
-            {
-                'title': 'Tata Consultancy Services (TCS)',
-                'description': 'fourth project',
-                'state': 'ongoing'
-            },
-            {
-                'title': 'HCL Technologies',
-                'description': 'fifth project',
-                'state': 'planning'
-            },
-        ];
+        // $scope.projects = [
+        //     {
+        //         'title': 'Infy project',
+        //         'description': 'first project',
+        //         'state': 'planning'
+        //     },
+        //     {
+        //         'title': 'Cognizant Technologies',
+        //         'description': 'second project',
+        //         'state': 'ongoing'
+        //     },
+        //     {
+        //         'title': 'Wipro',
+        //         'description': 'third project',
+        //         'state': 'closed'
+        //     },
+        //     {
+        //         'title': 'Tata Consultancy Services (TCS)',
+        //         'description': 'fourth project',
+        //         'state': 'ongoing'
+        //     },
+        //     {
+        //         'title': 'HCL Technologies',
+        //         'description': 'fifth project',
+        //         'state': 'planning'
+        //     },
+        // ];
         $scope.addRow = function () {
             $scope.projects.push({'Title': $scope.title, 'Description': $scope.description, 'State': $scope.state});
             $scope.title = '';
@@ -214,6 +214,21 @@
             }
             $scope.projects.splice(index, 1);
         };
+
+
+            $scope.loadProjects= function(){ $http({
+                method: 'GET',
+                url: '/getallproject/lastLog',
+                                    
+                    }).success(function(response){
+                         $scope.projects = response;
+                    
+                        $scope.log=response[0].last_login;
+            }).error(function(error){
+            console.log("we are in error!!");
+                alert("error");
+            });         
+            };
     });
 </script>
 </body>

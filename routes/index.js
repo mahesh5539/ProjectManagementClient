@@ -6,7 +6,8 @@ router.get('/', function(req, res) {
   res.render('home');
 });
 router.get('/homePage', function(req, res) {
-	  res.render('home');
+	 
+	res.render('home');
 	});
 
 router.get('/getLoginPage', function(req, res){
@@ -22,8 +23,9 @@ router.get('/getSignupPage', function(req, res){
 router.get('/signup', function(req, res){
 	res.render('signup');
 });
-router.get('/thome', function(req, res) {
-	  res.render('thome');
+router.get('/thome/:email', function(req, res) {
+	var userEmail = req.params.email;
+	res.render('thome',{ 'emailId':userEmail });
 	});
 router.get('/dashboard', function(req, res) {
 	  res.render('dashboard');
