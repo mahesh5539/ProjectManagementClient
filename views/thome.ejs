@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app="projectHomeApp">
+<head>
+    <title>Project Home</title>
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script
+            src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script
+            src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script
+            src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js"></script>
+  <!--  <script src="assets/js/controllers.js"></script>-->
+</head>
+
+<!--nav bar start-->
+<nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">User Name</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                    <li class="divider"></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="col-sm-3 col-md-3 pull-right">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
+
+
+<!--nav bar ends-->
+
+
+<!--Model starts here : for creating new project-->
+
+<div class="container">
+
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#myModal"> <span class="glyphicon glyphicon-plus"></span>New Project</button>
+
+    <!-- Modal -->
+    <div class="modal fade newproject" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">New Project Details</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="title">Project Title</label>
+                            <input type="text" class="form-control" id="title" placeholder="Enter Project Title" />
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Project Description</label>
+                            <input type="text" class="form-control" id="description" placeholder="Enter Project Description" />
+                        </div>
+                        <button type="submit" class="btn btn-default">ADD PROJECT</button>
+                    </form>
+
+
+                </div>
+               <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>-->
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!--model ends here-->
+
+<!-- Controller name goes here -->
+<body ng-controller="ProjectCtrl">
+
+<table class="table">
+    <tr>
+        <th>Title
+        </th>
+        <th>Description
+        </th>
+        <th>State
+        </th>
+        <th>Action
+        </th>
+        <th>Progress
+        </th>
+    </tr>
+    <tr ng-repeat="project in projects  | filter: searchKeyword ">
+        <td>
+            <a href= "">{{project.title}}</a>
+        </td>
+        <td>
+            <p>{{project.description}}</p>
+        </td>
+        <td>
+            <p>{{project.state}}</p>
+        </td>
+        <td>
+            <input type="button" value="Remove" class="btn btn-primary" ng-click="removeRow(project.title)"/>
+            <!--<input type="button" value="Update" class="btn btn-primary" ng-click="removeRow(project.title)"/>-->
+
+        </td>
+
+        <td>
+
+            <div class="progress">
+                <div class="progress-bar progress-bar-success" style="width: 35%">
+                    <span class="sr-only">35% Complete (success)</span>
+                     35
+                </div>
+                <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 20%">
+                    <span class="sr-only">20% Complete (warning)</span>
+                    20
+                </div>
+                <div class="progress-bar progress-bar-danger" style="width: 10%">
+                    <span class="sr-only">10% Complete (danger)</span>
+                    10
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div id="footer">
+    <div class="container">
+        <p>&nbsp;</p>
+        <p class="lead">This is footer </p>
+    </div>
+</div>
+
+<script>
+    var helloApp = angular.module("projectHomeApp", []);
+    helloApp.controller("ProjectCtrl", function($scope) {
+        $scope.projects = [
+            {
+                'title': 'Infy project',
+                'description': 'first project',
+                'state': 'planning'
+            },
+            {
+                'title': 'Cognizant Technologies',
+                'description': 'second project',
+                'state': 'ongoing'
+            },
+            {
+                'title': 'Wipro',
+                'description': 'third project',
+                'state': 'closed'
+            },
+            {
+                'title': 'Tata Consultancy Services (TCS)',
+                'description': 'fourth project',
+                'state': 'ongoing'
+            },
+            {
+                'title': 'HCL Technologies',
+                'description': 'fifth project',
+                'state': 'planning'
+            },
+        ];
+        $scope.addRow = function () {
+            $scope.projects.push({'Title': $scope.title, 'Description': $scope.description, 'State': $scope.state});
+            $scope.title = '';
+            $scope.description = '';
+            $scope.state = '';
+        };
+        $scope.removeRow = function (title) {
+            var index = -1;
+            var comArr = eval($scope.projects);
+            for (var i = 0; i < comArr.length; i++) {
+                if (comArr[i].title === title) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index === -1) {
+                alert("Something gone wrong");
+            }
+            $scope.projects.splice(index, 1);
+        };
+    });
+</script>
+</body>
+</html>

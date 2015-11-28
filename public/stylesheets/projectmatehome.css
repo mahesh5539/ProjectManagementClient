@@ -1,0 +1,82 @@
+		#bodycss{
+      width: 100%;
+      height: 100%;
+		  position:absolute;
+    	  background:no-repeat;
+    	  background-image: url(/img/office2.png);
+    	  top:0; left:0;
+     	  background-size:100%; 
+        
+		}
+		li{
+			font-size: 22px;
+      font-weight: bold;
+		}
+    a .navclass{
+      color: white;
+    }
+    h1{
+      font-family: Impact;
+      
+      font: 800 50px/54px "Montserrat";
+      color: white;
+
+    }
+    #logoimage{
+      position: absolute;
+       margin-top: 6%;
+      margin-left: 16%;
+    }
+    #title{
+      position: absolute;
+      margin-left: 20%;
+      margin-top: 5%;
+    }
+    #navigationBar{
+      position: absolute;
+      margin-left: 40%;
+      padding-top: 7%;
+
+    }
+    ul li{
+      list-style-type: none;
+      display: inline;
+    }
+    li{
+      padding-left: 70px;
+      color: white;
+    }
+    #message{
+      margin: auto;      
+      width: 54%;
+      font-weight: bold;
+      margin-top: 15%;
+    }
+    h2{
+      color: white;
+      margin-left: 8%;
+      font: 800;
+    }
+    h3{
+      margin-left: 4%;
+      color: #abacaf;
+      font:400 italic 25px/26px "Open Sans";
+    }
+    button{
+      position: absolute;
+      margin-left: 38%;
+      margin-top: 5%;
+      width: 350px;
+      height: 50px;
+      font: 700 20px/20px "Open Sans";
+      border-radius: 3px;
+    }
+    .btn{
+      
+      font-size: 20px;
+    font-weight: bolder;
+    }
+    #btn-login{
+      position: absolute;
+      margin-left: 50px;
+    }

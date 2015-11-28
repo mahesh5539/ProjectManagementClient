@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html ng-app="homepage">
+  <head>
+	<title>Project Management</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/projectmatehome.css">
+  <script>
+     $(document).ready(function(){
+    $("#loginbox").hide();
+    $("#signupbox").hide();
+    
+  });
+     
+      $(document).ready(function(){
+        $("#logo").click(function(){
+          $('#signup').css('color', '#23527c');
+          $('#login').css('color', '#23527c');
+          $('#help').css('color', '#23527c');
+        $('#aboutus').css('color', '#23527c');
+         $("#loginbox").hide();
+        $("#signupbox").hide();
+        $("#homecontent").show();
+
+    });    
+  });
+
+    $(document).ready(function(){
+    $("#login").click(function(){
+        $("#homecontent").hide();
+        $("#signupbox").hide();
+        $("#loginbox").show();
+        $('#login').css('color', 'white');
+        $('#signup').css('color', '#23527c');
+        $('#aboutus').css('color', '#23527c');
+        $('#help').css('color', '#23527c');
+    });
+  });
+    $(document).ready(function(){
+    $("#signup").click(function(){
+        $("#homecontent").hide();
+        $("#signupbox").show();
+        $("#loginbox").hide();
+        $('#login').css('color', '#23527c');
+        $('#signup').css('color', 'white');
+        $('#aboutus').css('color', '#23527c');
+        $('#help').css('color', '#23527c');
+    });
+  });
+    
+    $(document).ready(function(){
+    $("#signup2").click(function(){
+        $("#homecontent").hide();
+        $("#signupbox").show();
+        $("#loginbox").hide();
+        $('#login').css('color', '#23527c');
+        $('#signup').css('color', 'white');
+        $('#aboutus').css('color', '#23527c');
+        $('#help').css('color', '#23527c');
+    });
+  });
+      $(document).ready(function(){
+        $("#aboutus").click(function(){
+          $('#signup').css('color', '#23527c');
+          $('#login').css('color', '#23527c');
+          $('#help').css('color', '#23527c');
+        $('#aboutus').css('color', 'white');
+         $("#loginbox").hide();
+        $("#signupbox").hide();
+        $("#homecontent").show();
+
+    });    
+  });
+      $(document).ready(function(){
+        $("#help").click(function(){
+          $('#signup').css('color', '#23527c');
+          $('#login').css('color', '#23527c');
+          $('#help').css('color', 'white');
+        $('#aboutus').css('color', '#23527c');
+         $("#loginbox").hide();
+        $("#signupbox").hide();
+        $("#homecontent").show();
+
+    });    
+  });
+   $(document).ready(function(){
+        $(".removediv").click(function(){
+          $('#signup').css('color', '#23527c');
+          $('#login').css('color', '#23527c');
+          $('#help').css('color', '#23527c');
+        $('#aboutus').css('color', '#23527c');
+         $("#loginbox").hide();
+        $("#signupbox").hide();
+        $("#homecontent").show();
+
+    });    
+  });
+  
+    </script>
+    <script>
+ 
+    </script>
+  </head>
+
+  <body ng-controller="homepageController">
+
+  	<div id="bodycss">
+  		<div id="logo">
+          <div id="logoimage">
+            <img style="width:50px;height:50px;" src="/img/mainlogo.png">
+        </div>
+        <div id="title">
+            <h1>Projectmate</h1>
+        </div>  
+      </div>
+      
+
+  		<div id="navigationBar">
+        <ul >
+            <li><a id="signup" href="">Sign Up</a></li>
+            <li><a  id="login" href="">Login</a></li>
+            <li><a ng-click="contactus()" id="aboutus" href=""> About us</a></li>
+            <li><a  id="help" href="">Help</a></li>
+          </ul>
+      </div>
+      <!-- Home page content -->
+      <div id="homecontent">
+          <div id="message">
+            <h2>Projectmate software help you to scale your business</h2>
+            <h3>The Easiest way to achieve productivity increase without changing anything.</h3>
+          </div>
+          
+          <div id="trialButton">
+            <button style="text-transform: uppercase;"class="btn btn-primary">Trial for one month</button>
+          </div>
+      </div>
+      <!-- End of Home page content -->
+      
+
+      <!-- Start of login content -->
+      <div id="loginbox" style="margin-top:250px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+            <div style="position:relative;" class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title">Login</div>
+                        <div class="removediv" style="float:right; font-size: 100%; margin-top:-20px;"><a href=""><span class="glyphicon glyphicon-remove"></span></a></div>
+                    </div>     
+
+                    <div style="padding-top:30px" class="panel-body" >
+
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                            
+                        <form id="loginform" class="form-horizontal" role="form">
+                                     
+                                    <div id="errloginemail" style="font-size: small;"></div> 
+                            <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <input data-ng-model="loginuserName" id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">                                        
+                                    </div>
+                                <div id="errloginpwd" style="font-size: small;"></div> 
+                            <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        <input data-ng-model="loginpassword" id="login-password" type="password" class="form-control" name="password" placeholder="password">
+                                    </div>
+
+                                <div style="margin-top:10px" class="form-group">
+                                    <!-- Button -->
+
+                                    <div class="col-sm-12 controls">
+                                      <a id="btn-login" style="font-size:20px;height:40px; width:200px; margin-left:35%;" data-ng-click="login()" href="#" class="btn btn-primary">Login  </a>
+                                      
+
+                                    </div>
+                                </div>
+                                  <br>
+                                  <br>
+
+                                <div class="form-group">
+                                    <div class="col-md-12 control">
+                                        <div style="border-top: 1px solid#888; padding-top:15px; font-size:100%" >
+                                            Don't have an account! 
+                                        <a id="signup2"href=""><div class="pull-right" style="font-size: 100%;"><a href="#">Forgot password? </a></div>
+                                            Sign Up Here
+                                        </a>
+                                        
+                                        </div>
+                                    </div>
+                                </div>    
+                            </form>     
+                        </div>                     
+                    </div>  
+        </div>
+
+      <!-- End of login content -->
+
+      <!-- Start of Signup content -->
+      <div>
+         <div id="signupbox" style="margin-top:250px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+            <div style="position:relative;" class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title">Sign up</div>
+                        <div class="removediv" style="float:right; font-size: 100%; margin-top:-20px;"><a href=""><span class="glyphicon glyphicon-remove"></span></a></div>
+                    </div>     
+
+                    <div style="padding-top:30px" class="panel-body" >
+
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                            
+                        <form id="loginform" class="form-horizontal" role="form">
+                             <div id="erremail" style="font-size: small;"></div>       
+                            <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <input id="email" data-ng-model="userName" id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">   
+                                                                           
+                                    </div>
+                                 <div id="errpwd" style="font-size: small;"></div> 
+                            <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        <input id="password" data-ng-model="password" id="login-password" type="password" class="form-control" name="password" placeholder="password">
+                                          
+                                    </div>
+                                     <div id="errconfpwd" style="font-size: small;"></div>
+                                     <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        <input id="confirmPassword" type="password" class="form-control" name="confirm-password" placeholder="Confirm password">
+                                        
+                                    </div>
+
+                                <div style="margin-top:10px" class="form-group">
+                                    <!-- Button -->
+
+                                    <div class="col-sm-12 controls">
+                                      <a id="btn-login" style="font-size:20px;height:40px; width:200px; margin-left:35%;" data-ng-click="signup()" href="#" class="btn btn-primary">Sign up </a>
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                
+                            </form>     
+                        </div>                     
+                    </div>  
+        </div>
+      </div>
+      <!-- End of Signup content -->
+
+
+          <nav  class="navbar navbar-collapse navbar-fixed-bottom">
+            <div class="container">
+              <p class="pull-right" style="color:white;"><b>Projectmate</b> &copy; Copyright-left-everything</p>      
+            </div>
+          </nav>	
+  	</div>
+  	
+  	
+  	
+  		
+  	
+  		 
+  
+	 
+  	<script>
+           function email(){
+        var emailid = document.getElementById('email').value;
+        var emailRegx = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+        return emailRegx.test(emailid);
+      }
+
+      function password(){
+        var password = document.getElementById('password').value;
+        var pwdRegx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+        return pwdRegx.test(password);
+      }
+       function confirmPassword(){
+        var password = document.getElementById('password').value;
+        var confirmPassword = document.getElementById('confirmPassword').value;
+        return (password === confirmPassword);
+      }
+      function validateCredentials(){
+        var x = email();
+        var y = password();
+        var z = confirmPassword();
+        var valid = true;
+        var valMessage1 = '';
+        var valMessage2 = '';
+        var valMessage3 = '';
+
+         if (!x) {
+              valMessage1 += 'Invalid Email Id <br />';
+              valid = false;
+          }
+          if (!y) {
+              valMessage2 += 'Password should contain Minimum 8 characters at least 1 Uppercase Alphabet, 1 Lowercase Alphabet and 1 Number  <br />';
+              valid = false;
+          }
+          if (!z) {
+              valMessage3 += 'Password doesn\'t match <br />';
+              valid = false;
+          }
+
+           if (valid) {
+            return true;
+            }
+           else
+          {    
+               document.getElementById("erremail").innerHTML = valMessage1;
+          document.getElementById("errpwd").innerHTML = valMessage2;
+          document.getElementById("errconfpwd").innerHTML = valMessage3;        
+              return false;
+
+          }
+}
+  function isEmptyField(){
+    var emailid = document.getElementById('login-username').value;
+    var password = document.getElementById('login-password').value;
+    var valid = true;
+    if (emailid =="") {
+      document.getElementById("errloginemail").innerHTML = "Email id field can't be empty.";
+      valid = false;
+    }
+    else if(password ==""){
+      document.getElementById("errloginpwd").innerHTML = "Password field can't be empty.";
+      valid = false;
+    }  
+    if (valid) {
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+
+  		 var homepage = angular.module('homepage', []);
+              
+ 			 homepage.controller( 'homepageController', function ($scope,$http,$location){
+ 			 console.log("inside controller");
+       // Function perform validation and call login the API
+             
+       $scope.login = function(){ 
+        if(!isEmptyField()){
+            alert("Please enter username and password !!");
+        }
+         else{  
+
+        $http({
+          method: 'POST',
+              url: 'http://localhost:8080/api/v1/user',
+              data: { "userName": $scope.userName, "password":$scope.password}
+              }).success(function(response){            
+          if(response.name="mahesh"){
+            alert(response.name);
+          }
+          }).error(function(error){
+          console.log("we are in error!!");
+              alert("Signup Failed!!");
+          });   
+          }    
+      };
+
+    
+     // Function perform validation and call signup the API
+    
+      $scope.signup = function(){
+         if(!validateCredentials()){
+         alert("Please enter valid data!!");
+        }
+      else{
+
+       $http({
+          method: 'POST',
+              url: 'http://localhost:8080/api/v1/user',
+              data: { "userName": $scope.userName, "password":$scope.password}
+              }).success(function(response){            
+          if(response.name="mahesh"){
+            
+          }
+          }).error(function(error){
+          console.log("we are in error!!");
+              alert("Signup Failed!!");
+          });       
+      }
+    };  
+
+    
+     $scope.contactus = function(){
+      
+
+       $http({
+          method: 'GET',
+              url: '/contactPage'
+              }).success(function(response){            
+          if(response.page="render"){
+            window.location='/contact';
+          }
+          }).error(function(error){
+            alert('Internal error!!');
+          });       
+
+    };
+        			
+ 			 });
+
+    
+  	</script>
+  </body>
+
+</html>

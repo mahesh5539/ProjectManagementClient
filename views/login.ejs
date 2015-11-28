@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<title>Login</title>
+	<link href="/stylesheets/bootstrap.min.css" type="text/css" rel="stylesheet">
+		
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/stylesheets/font-awesome.min.css">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<!-- <link href="../../../bootstrap-social-gh-pages/bootstrap-social.css" rel="stylesheet"> -->
+	<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	
+  </head>
+
+<body data-ng-app="signupApp">
+<div data-ng-controller="signupController">
+
+<nav class="navbar navbar-collapse">
+  <div class="container">
+  	<div>
+  		<h1 style="position:absolute; margin-left:26%;">Project Management</h1>
+  	</div>
+  	<br>
+  	<br>
+  	<div style="height:15px;"></div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+		
+	</ul>
+	<ul class="nav navbar-nav navbar-right">
+        
+        <li><a data-ng-click="navLogin()" href="#"><span class="glyphicon glyphicon-log-in"></span> Signup</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div style="height:20px;"></div>
+<div class="container">
+      <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+            <div style="position:relative;" class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title">Login</div>
+                        <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
+                    </div>     
+
+                    <div style="padding-top:30px" class="panel-body" >
+
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                            
+                        <form id="loginform" class="form-horizontal" role="form">
+                                    
+                            <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <input data-ng-model="userName" id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">                                        
+                                    </div>
+                                
+                            <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        <input data-ng-model="password" id="login-password" type="password" class="form-control" name="password" placeholder="password">
+                                    </div>
+                                    
+
+                                
+     
+
+
+                                <div style="margin-top:10px" class="form-group">
+                                    <!-- Button -->
+
+                                    <div class="col-sm-12 controls">
+                                      <a id="btn-login" data-ng-click="signin()" href="#">Login  </a>
+                                      
+
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-md-12 control">
+                                        <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                            Don't have an account! 
+                                        <a ng-click="signupPage()"href="">
+                                            Sign Up Here
+                                        </a>
+                                        </div>
+                                    </div>
+                                </div>    
+                            </form>     
+
+
+
+                        </div>                     
+                    </div>  
+        </div>
+</div>
+<nav  class="navbar navbar-collapse navbar-fixed-bottom">
+	<div class="container">
+		
+        <p class="pull-right"><b>Projectmate</b> &copy; Copyright-left-everything</p>      
+    </div>
+</nav>
+</div>
+
+<script>
+var signupApp = angular.module('signupApp', []);
+              
+ 			 signupApp.controller( 'signupController', function ($scope,$http,$location){
+ 			 console.log("inside signup");
+ 				$scope.signup = function(){ $http({
+   				method: 'POST',
+	            url: '/createUser/signUp',
+	            data: { "bankName": $scope.bankName, "AdminName":$scope.AdminName, "AdminSurname":$scope.AdminSurname, "email":$scope.email, "password":$scope.password, "Address":$scope.Address, "zipcode":$scope.zipcode, "city":$scope.city, "state":$scope.state, "phone":$scope.phone}
+	           		
+	           		}).success(function(response){
+	           
+	            alert("Successfully logged in !!");
+	            
+	            if(response.signup == "success"){
+	           		window.location = '/Signedup';
+	           		}
+	            else
+	            {
+	            	window.location = '/failLogin';
+	            	}
+	        }).error(function(error){
+	        console.log("we are in error!!");
+	            alert("Signup Failed!!");
+	        });   		
+ 			}; 			
+ 			 });	
+</script>
+</body>
+</html>
