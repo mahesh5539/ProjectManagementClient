@@ -126,34 +126,29 @@
         
     </tr>
     <tr ng-repeat="project in projects  | filter: searchKeyword ">
+
         <td>
             <a href= "">{{project.title}}</a>
+            <p hidden>{{project.Id}}</p>
         </td>
         <td>
             <p>{{project.description}}</p>
         </td>
         <td>
-             <li class="dropdown nav navbar-nav">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-list"> State</span>
-                <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                   <li><a data-ng-click="navEvents()" href="#">View Events</a></li>
-                    <li><a data-ng-click="navOrgEvents()"href="#">Organize</a></li>
-                </ul>
-        </li>
+            <input name="textinput1" data-ng-model="state" style="height:35px; width:80px;" class="form-control input-lg" type="text" list="textinput1" value={{project.state}}>
+            <datalist id="textinput1">
+                <option ng-click="dropboxitemselected()" value="A +ve">
+                <option value="A -ve">
+                <option value="B +ve">
+                <option value="B -ve">
+                <option value="AB +ve">
+                <option value="AB -ve">
+                <option value="O +ve">
+                <option value="O -ve">
+            </datalist>
         </td>
         <td>
-          <li class="dropdown nav navbar-nav">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style"font-size:25px;"><span class="glyphicon glyphicon-list"> Action</span>
-                <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                   <li><a data-ng-click="navEvents()" href="#">View Events</a></li>
-                    <li><a data-ng-click="navOrgEvents()"href="#">Organize</a></li>
-                </ul>
-        </li>
-            <!-- <input type="button" value="Remove" class="btn btn-primary" ng-click="removeRow(project.title)"/>
-            <input type="button" value="update" class="btn btn-primary"/>
-             --><!--<input type="button" value="Update" class="btn btn-primary" ng-click="removeRow(project.title)"/>-->
+            <button type="button" ng-click="deleteProject(project.Id)" class="btn btn-primary">Delete</button>
         </td>
         <td>
             <div class="progress">
@@ -185,33 +180,58 @@
 	var emailId = $("#emailValue").val();
     var helloApp = angular.module("projectHomeApp", []);
     helloApp.controller("ProjectCtrl", function($scope, $http) {
-         // $scope.projects = [
-         //     {
-         //         'title': 'Infy project',
-         //         'description': 'first project',
-         //         'state': 'planning'
-         //     },
-         //     {
-         //         'title': 'Cognizant Technologies',
-         //         'description': 'second project',
-         //         'state': 'ongoing'
-         //     },
-         //     {
-         //         'title': 'Wipro',
-         //         'description': 'third project',
-         //         'state': 'closed'
-         //     },
-         //     {
-         //         'title': 'Tata Consultancy Services (TCS)',
-         //         'description': 'fourth project',
-         //         'state': 'ongoing'
-         //     },
-         //     {
-         //         'title': 'HCL Technologies',
-         //         'description': 'fifth project',
-         //         'state': 'planning'
-         //     },
-         // ];
+
+        $scope.deleteProject = function (Id) {
+
+           // alert("sending delete request "+Id);
+            if (confirm("You want to delete selected project ???") == true) {
+
+                $http({
+                    method: 'DELETE',
+                    url: 'http://localhost:8080/api/v1/project/' + Id + '/' + emailId
+                }).success(function (response) {
+
+
+                }).error(function (error) {
+                    alert("error");
+                });
+            } else {
+                alert("You pressed Cancel!");
+            }
+
+        }
+          $scope.projects = [
+              {
+                  'Id':'2',
+                  'title': 'Infy project',
+                  'description': 'first project',
+                  'state': 'planning'
+              },
+              {
+                  'Id':'2',
+                  'title': 'Cognizant Technologies',
+                  'description': 'second project',
+                  'state': 'ongoing'
+              },
+              {
+                  'Id':'2',
+                  'title': 'Wipro',
+                  'description': 'third project',
+                  'state': 'closed'
+              },
+              {
+                  'Id':'2',
+                  'title': 'Tata Consultancy Services (TCS)',
+                  'description': 'fourth project',
+                  'state': 'ongoing'
+              },
+              {
+                  'Id':'2',
+                  'title': 'HCL Technologies',
+                  'description': 'fifth project',
+                  'state': 'planning'
+              },
+          ];
         $scope.addRow = function () {
             $scope.projects.push({'Title': $scope.title, 'Description': $scope.description, 'State': $scope.state});
             $scope.title = '';
@@ -264,6 +284,21 @@
             	 });         
             	};
     });
+
+
+    /*drop down controller below for state of project*/
+    helloApp.controller('StateDropDownController', function ($scope) {
+
+        $scope.states = ['Math', 'Physics', 'Chemistry', 'Hindi', 'English'];
+        $scope.selectedItem;
+        $scope.dropboxitemselected = function (item) {
+
+            $scope.selectedItem = item;
+            alert($scope.selectedItem);
+        }
+    });
+
+
 </script>
 </body>
 </html>
