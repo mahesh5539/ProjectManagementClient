@@ -120,8 +120,10 @@
         </th>
         <th>Action
         </th>
+        
         <th>Progress
         </th>
+        
     </tr>
     <tr ng-repeat="project in projects  | filter: searchKeyword ">
         <td>
@@ -131,16 +133,29 @@
             <p>{{project.description}}</p>
         </td>
         <td>
-            <p>{{project.state}}</p>
+             <li class="dropdown nav navbar-nav">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-list"> State</span>
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                   <li><a data-ng-click="navEvents()" href="#">View Events</a></li>
+                    <li><a data-ng-click="navOrgEvents()"href="#">Organize</a></li>
+                </ul>
+        </li>
         </td>
         <td>
-            <input type="button" value="Remove" class="btn btn-primary" ng-click="removeRow(project.title)"/>
-            <!--<input type="button" value="Update" class="btn btn-primary" ng-click="removeRow(project.title)"/>-->
-
+          <li class="dropdown nav navbar-nav">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style"font-size:25px;"><span class="glyphicon glyphicon-list"> Action</span>
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                   <li><a data-ng-click="navEvents()" href="#">View Events</a></li>
+                    <li><a data-ng-click="navOrgEvents()"href="#">Organize</a></li>
+                </ul>
+        </li>
+            <!-- <input type="button" value="Remove" class="btn btn-primary" ng-click="removeRow(project.title)"/>
+            <input type="button" value="update" class="btn btn-primary"/>
+             --><!--<input type="button" value="Update" class="btn btn-primary" ng-click="removeRow(project.title)"/>-->
         </td>
-
         <td>
-
             <div class="progress">
                 <div class="progress-bar progress-bar-success" style="width: 35%">
                     <span class="sr-only">35% Complete (success)</span>
@@ -170,33 +185,33 @@
 	var emailId = $("#emailValue").val();
     var helloApp = angular.module("projectHomeApp", []);
     helloApp.controller("ProjectCtrl", function($scope, $http) {
-        // $scope.projects = [
-        //     {
-        //         'title': 'Infy project',
-        //         'description': 'first project',
-        //         'state': 'planning'
-        //     },
-        //     {
-        //         'title': 'Cognizant Technologies',
-        //         'description': 'second project',
-        //         'state': 'ongoing'
-        //     },
-        //     {
-        //         'title': 'Wipro',
-        //         'description': 'third project',
-        //         'state': 'closed'
-        //     },
-        //     {
-        //         'title': 'Tata Consultancy Services (TCS)',
-        //         'description': 'fourth project',
-        //         'state': 'ongoing'
-        //     },
-        //     {
-        //         'title': 'HCL Technologies',
-        //         'description': 'fifth project',
-        //         'state': 'planning'
-        //     },
-        // ];
+         // $scope.projects = [
+         //     {
+         //         'title': 'Infy project',
+         //         'description': 'first project',
+         //         'state': 'planning'
+         //     },
+         //     {
+         //         'title': 'Cognizant Technologies',
+         //         'description': 'second project',
+         //         'state': 'ongoing'
+         //     },
+         //     {
+         //         'title': 'Wipro',
+         //         'description': 'third project',
+         //         'state': 'closed'
+         //     },
+         //     {
+         //         'title': 'Tata Consultancy Services (TCS)',
+         //         'description': 'fourth project',
+         //         'state': 'ongoing'
+         //     },
+         //     {
+         //         'title': 'HCL Technologies',
+         //         'description': 'fifth project',
+         //         'state': 'planning'
+         //     },
+         // ];
         $scope.addRow = function () {
             $scope.projects.push({'Title': $scope.title, 'Description': $scope.description, 'State': $scope.state});
             $scope.title = '';
