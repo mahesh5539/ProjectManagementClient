@@ -83,13 +83,13 @@
                     <form role="form">
                         <div class="form-group">
                             <label for="title">Project Title</label>
-                            <input type="text" class="form-control" id="title" placeholder="Enter Project Title" />
+                            <input ng-model="projectTitle" type="text" class="form-control" id="title" placeholder="Enter Project Title" />
                         </div>
                         <div class="form-group">
                             <label for="description">Project Description</label>
-                            <input type="text" class="form-control" id="description" placeholder="Enter Project Description" />
+                            <input ng-model="projectDesc" type="text" class="form-control" id="description" placeholder="Enter Project Description" />
                         </div>
-                        <button type="submit" class="btn btn-default">ADD PROJECT</button>
+                        <button ng-click="addProject()" type="submit" class="btn btn-default">ADD PROJECT</button>
                     </form>
 
 
@@ -229,6 +229,21 @@
                 alert("error");
             });         
             };
+            
+            $scope.addProject= function(){ 
+              var title = $scope.projectTitle;
+              var description = $scope.projectDesc;
+              var state = 'Planning';
+              
+              $http({
+                method: 'POST',
+                url: 'http://localhost:8080/api/v1/project/'+title+'/'+description+'/'+state+'/'+emailId                                    
+               }).success(function(response){
+                         $scope.projects = response;
+          		 }).error(function(error){
+            				alert("error");
+            	 });         
+            	};
     });
 </script>
 </body>
