@@ -25,6 +25,7 @@ router.get('/signup', function(req, res){
 });
 router.get('/thome/:email', function(req, res) {
 	var userEmail = req.params.email;
+	console.log("----user----"+userEmail);
 	res.render('thome',{ 'emailId':userEmail });
 	});
 router.get('/dashboard', function(req, res) {
