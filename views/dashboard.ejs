@@ -17,6 +17,7 @@
 
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+  
     <style>
 
     body{
@@ -131,14 +132,116 @@ th .column_content{
     height: 570px;
 }
 </style>
-<!-- Navbar Dropdown Cart - END -->
+    <style>
+        .task_context {
+            position: absolute;
+            margin-top: -30px;
+            margin-left: 0.5%;
+        }
+       .task_id {
+    margin-left: 2%;
+    margin-top: 0.3%;
+    position: absolute;
+}
+       .assignee {
+    position: absolute;
+    margin-left: 10%;
+    margin-top: 0.3%;
+}
+       .avatar {
+    position: absolute;
+    margin-top: 1%;
+    margin-left: 12%;
+}
+        .assignee {
+    position: absolute;
+    margin-left: 10%;
+    margin-top: 0.3%;
+}
+        .head{
+            height: 25px;
+        }
+        .title {
+        margin-left: 0.8%;
+    margin-top: 1%;
+    position: absolute;
+}
+.taskborder {
+    width: 90%;
+    height: 12%;
+    border: 1px solid black;
+    border-radius: 3%;
+    margin-left: 4%;
+    margin-top: 4%;    
+}
+#inviteUser{
+    position: relative;
+    margin-left: 35%;
+    margin-top: 10%;
+    background-image: url(inviteUser.png);
+    background-repeat: no-repeat;
 
+    width:25%;
+    height: 30%;
+    
+    
+}
+
+#invitebtn{
+    margin-left: 30%;
+    width: 120px;
+    height: 35px;
+} 
+#inviteEmail{
+    position: relative;
+    margin-left: 18%;
+    border: 1px solid;
+    width: 220px;
+}
+    </style>
+
+<!-- Navbar Dropdown Cart - END -->
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("Text", ev.target.id);
+}
+
+function drop(ev) {
+    var data = ev.dataTransfer.getData("Text");
+    ev.target.appendChild(document.getElementById(data));
+    ev.preventDefault();
+}
+</script>
+  <script>
+  function getUniqueString() {
+    var S4 = function() {
+       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    };
+    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+    }
+ 
+
+          $(document).ready(function(){
+         
+    $("#addTaskBtn").click(function(){
+            var idValue = getUniqueString();      
+  var CreateTaskTitle = document.getElementById('title').value;
+  var CreateTaskDesc = document.getElementById('description').value;
+  var CreateTaskAssignee = document.getElementById('asignee').value;
+  var CreateTaskState = document.getElementById('state').value;
+  var CreateTaskEstimate = document.getElementById('estimate').value;
+  var CreateTaskActual = document.getElementById('actual').value;
+        $("#first_column").append('<div id="'+idValue+'" class="taskborder" draggable="true" ondragstart="drag(event)"><div class="head" style="background-color: #286090; border-radius: 3%;"><span class="task_context">&nbsp;</span><div class="task_tab"><strong class="task_id" style="color: #FFFFFF">ID 13</strong></div><div class="assignee" style="color: #FFFFFF"><span>None</span><span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span></div></div><div class="body"><img alt="" class="avatar" src="https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"width="30"><div class="title">'+CreateTaskTitle+'</div></div><div class="details"><p hidden ng-model="ngTitle">'+CreateTaskTitle+'</p><p hidden ng-model="ngDesc">'+CreateTaskDesc+'</p><p hidden ng-model="ngAssignee">'+CreateTaskAssignee+'</p><p hidden ng-model="ngState">'+CreateTaskState+'</p><p hidden ng-model="ngEstimate">'+CreateTaskEstimate+'</p><p hidden ng-model="ngActual">'+CreateTaskActual+'</p></div><ul></ul></div>');                    
+    
+  });
+  });
+    </script>
   </head>
     <body ng-controller="TaskCtrl">
-
-
-
-
 
 <!-- Navbar Dropdown Cart - START -->
 
@@ -176,7 +279,7 @@ th .column_content{
   <div style="position:absolute;padding-top:0px;"class="container">
     <div class="row"> 
         <div id="projectNameId">
-            <p>ProjectName</p>
+            <p>CMPE 275 Project</p>
         </div>
         <div id="inviteUserId" class="col-lg-6">
             
@@ -220,7 +323,7 @@ th .column_content{
                             <label for="actual">Task Actual</label>
                             <input ng-model="taskActual" type="text" class="form-control" id="actual" placeholder="Enter Task Actual" />
                         </div>
-                        <button ng-click="addTask()" type="submit" class="btn btn-default" data-dismiss="modal">ADD TASK</button>
+                        <button id="addTaskBtn" ng-click="addTask()" type="submit" class="btn btn-default" data-dismiss="modal">ADD TASK</button>
                     </form>
 
 
@@ -296,35 +399,158 @@ th .column_content{
                   <th class="expand" colspan="1" data-tasksperow="1" id="done_9"
                 rowspan="1" style=
                 "width: 246px; min-width: 246px; max-width: 246px;">
-                    <div class="column_content">
+                    <div id="first_column" class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+                        <div id="task1" class="taskborder" draggable="true" ondragstart="drag(event)">
+                            <div class="head" style="background-color: #286090; border-radius: 3%;">
+                                <span class="task_context">&nbsp;</span>
+                                <div class="task_tab">
+                                    <strong class="task_id" style="color: #FFFFFF">ID 13</strong>
+                                </div>
+                                <div class="assignee" style="color: #FFFFFF">
+                                    <span>None</span>
+                                    <span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span>
+                                </div>
+
+                            </div>
+                            <div class="body">
+                                <img alt="" class="avatar" src=
+                                "https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"
+                                width="30">
+                                <div class="title">
+                                    FirstTask
+                                </div>
+                            </div>
+                            
+                            <div class="details"></div>
+                            <ul></ul>
+                        </div>
+
+                        <div id="task2" class="taskborder" draggable="true" ondragstart="drag(event)">
+                            <div class="head" style="background-color: #286090; border-radius: 3%;">
+                                <span class="task_context">&nbsp;</span>
+                                <div class="task_tab">
+                                    <strong class="task_id" style="color: #FFFFFF">ID 13</strong>
+                                </div>
+                                <div class="assignee" style="color: #FFFFFF">
+                                    <span>None</span>
+                                    <span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span>
+                                </div>
+
+                            </div>
+                            <div class="body">
+                                <img alt="" class="avatar" src=
+                                "https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"
+                                width="30">
+                                <div class="title">
+                                    secondTask
+                                </div>
+                            </div>
+                            
+                            <div class="details"></div>
+                            <ul></ul>
+                        </div>
+                    
+                     
+                        <div id="task5" class="taskborder" draggable="true" ondragstart="drag(event)">
+                            <div class="head" style="background-color: #286090; border-radius: 3%;">
+                                <span class="task_context">&nbsp;</span>
+                                <div class="task_tab">
+                                    <strong class="task_id" style="color: #FFFFFF">ID 13</strong>
+                                </div>
+                                <div class="assignee" style="color: #FFFFFF">
+                                    <span>None</span>
+                                    <span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span>
+                                </div>
+
+                            </div>
+                            <div class="body">
+                                <img alt="" class="avatar" src=
+                                "https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"
+                                width="30">
+                                <div class="title">
+                                    FifthTask
+                                </div>
+                            </div>
+                            
+                            <div class="details"></div>
+                            <ul></ul>
+                        </div>
+                        <div id="task6" class="taskborder" draggable="true" ondragstart="drag(event)">
+                            <div class="head" style="background-color: #286090; border-radius: 3%;">
+                                <span class="task_context">&nbsp;</span>
+                                <div class="task_tab">
+                                    <strong class="task_id" style="color: #FFFFFF">ID 13</strong>
+                                </div>
+                                <div class="assignee" style="color: #FFFFFF">
+                                    <span>None</span>
+                                    <span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span>
+                                </div>
+
+                            </div>
+                            <div class="body">
+                                <img alt="" class="avatar" src=
+                                "https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"
+                                width="30">
+                                <div class="title">
+                                    SixthTask
+                                </div>
+                            </div>
+                            
+                            <div class="details"></div>
+                            <ul></ul>
+                        </div>
+                        <div id="task7" class="taskborder" draggable="true" ondragstart="drag(event)">
+                            <div class="head" style="background-color: #286090; border-radius: 3%;">
+                                <span class="task_context">&nbsp;</span>
+                                <div class="task_tab">
+                                    <strong class="task_id" style="color: #FFFFFF">ID 13</strong>
+                                </div>
+                                <div class="assignee" style="color: #FFFFFF">
+                                    <span>None</span>
+                                    <span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span>
+                                </div>
+
+                            </div>
+                            <div class="body">
+                                <img alt="" class="avatar" src=
+                                "https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"
+                                width="30">
+                                <div class="title">
+                                    seventhTask
+                                </div>
+                            </div>
+                            
+                            <div class="details"></div>
+                            <ul></ul>
+                        </div>
+                    </div>                   
+                </th>
+                <th class="expand" colspan="1" data-tasksperow="1" id="done_9"
+                rowspan="1" style=
+                "width: 246px; min-width: 246px; max-width: 246px;">
+                    <div id="second_column" class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
                         
                     </div>                   
                 </th>
                 <th class="expand" colspan="1" data-tasksperow="1" id="done_9"
                 rowspan="1" style=
                 "width: 246px; min-width: 246px; max-width: 246px;">
-                    <div class="column_content">
+                    <div class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
                         
                     </div>                   
                 </th>
                 <th class="expand" colspan="1" data-tasksperow="1" id="done_9"
                 rowspan="1" style=
                 "width: 246px; min-width: 246px; max-width: 246px;">
-                    <div class="column_content">
+                    <div class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
                         
                     </div>                   
                 </th>
                 <th class="expand" colspan="1" data-tasksperow="1" id="done_9"
                 rowspan="1" style=
                 "width: 246px; min-width: 246px; max-width: 246px;">
-                    <div class="column_content">
-                        
-                    </div>                   
-                </th>
-                <th class="expand" colspan="1" data-tasksperow="1" id="done_9"
-                rowspan="1" style=
-                "width: 246px; min-width: 246px; max-width: 246px;">
-                    <div class="column_content">
+                    <div class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
                         
                     </div>                   
                 </th>   
@@ -338,46 +564,46 @@ th .column_content{
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                             <div class="listing listing-default">
                                 <div class="shape">
-                                    <div class="shape-text">buy</div>
+                                    
                                 </div>
                                 <div class="listing-content">
-                                    <h3 class="lead">Task Completed</h3>
+                                    <h3 class="lead">New Tasks</h3>
                                     <p>0</p>
                                 </div>
                             </div>
                             <div class="listing listing-default">
                                 <div class="shape">
-                                    <div class="shape-text">buy</div>
+                                    
                                 </div>
                                 <div class="listing-content">
-                                    <h3 class="lead">Task Completed</h3>
+                                    <h3 class="lead">Assigned Task</h3>
                                     <p>0</p>
                                 </div>
                             </div>
                             <div class="listing listing-default">
                                 <div class="shape">
-                                    <div class="shape-text">buy</div>
+                                    
                                 </div>
                                 <div class="listing-content">
-                                    <h3 class="lead">Task Completed</h3>
+                                    <h3 class="lead">Started Task</h3>
                                     <p>0</p>
                                 </div>
                             </div>
                             <div class="listing listing-default">
                                 <div class="shape">
-                                    <div class="shape-text">buy</div>
+                                    
                                 </div>
                                 <div class="listing-content">
-                                    <h3 class="lead">Task Completed</h3>
+                                    <h3 class="lead">Finished Task</h3>
                                     <p>0</p>
                                 </div>
                             </div>
                             <div class="listing listing-default">
                                 <div class="shape">
-                                    <div class="shape-text">buy</div>
+                                    
                                 </div>
                                 <div class="listing-content">
-                                    <h3 class="lead">Task Completed</h3>
+                                    <h3 class="lead">Cancelled Task</h3>
                                     <p>0</p>
                                 </div>
                             </div>
@@ -388,11 +614,11 @@ th .column_content{
                      
  <style>
  #projectStatus{
-    margin-top: -622px;
-    margin-left: 82%;
+    margin-top: -630px;
+    margin-left: 84%;
  }
  .lead{
-    font-size: 15px;
+    font-size: 18px;
     font-weight: bold;
  }
 .shape {
@@ -447,7 +673,7 @@ th .column_content{
     width: 230px;
 }
 .listing-default .shape {
-    border-color: transparent #999999 transparent transparent;
+    
 }
 .listing-primary {
     border-color: #428bca;
