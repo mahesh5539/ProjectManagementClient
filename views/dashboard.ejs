@@ -498,10 +498,10 @@ th .column_content{
               var TaskActual = $scope.taskActual;
               var TaskState = 'New';
               var ProjectId= '1';
-              
+              alert("inside task");
               $http({
                 method: 'POST',
-                url: 'http://localhost:8080/api/v1/project/'+TaskTitle+'/'+TaskDescription+'/'+TaskAssignee+'/'+TaskState+'/'+ TaskEstimate+'/'+TaskActual+'/'+ProjectId
+                url: 'http://localhost:8080/api/tc/'+TaskTitle+'/'+TaskDescription+'/'+TaskAssignee+'/'+TaskState+'/'+ TaskEstimate+'/'+TaskActual+'/'+ProjectId+'/'
                 //{TaskTitle}/{TaskDescription}/{TaskAssignee}/{TaskState}/{TaskEstimate}/{TaskActual}/{ProjectId}/                                   
                }).success(function(response){
                        /*  $scope.projectTitle='';
@@ -511,9 +511,44 @@ th .column_content{
                          alert("Task created successfully !!!");
                          
           		 }).error(function(error){
-            				alert("error");
+            				alert("error : task ");
             	 });         
             	};
+    
+    });
+
+</script>
+
+
+<script>
+
+ var helloApp = angular.module("taskHomeApp", []);
+    helloApp.controller("TaskCtrl", function($scope, $http) {
+    
+     $scope.addTask= function(){ 
+              var TaskTitle = $scope.taskTitle;
+              var TaskDescription = $scope.taskDesc;
+              var TaskAssignee = $scope.taskAsignee;
+              var TaskEstimate = $scope.taskEstimate;
+              var TaskActual = $scope.taskActual;
+              var TaskState = 'New';
+              var ProjectId= '1';
+              alert("inside task");
+              $http({
+                method: 'PUT',
+                url: 'http://localhost:8080/api/tc/'+TaskTitle+'/'+TaskDescription+'/'+TaskAssignee+'/'+TaskState+'/'+ TaskEstimate+'/'+TaskActual+'/'+ProjectId+'/'
+                //{TaskTitle}/{TaskDescription}/{TaskAssignee}/{TaskState}/{TaskEstimate}/{TaskActual}/{ProjectId}/                                   
+               }).success(function(response){
+                       /*  $scope.projectTitle='';
+                         $scope.projectDesc='';
+                         $scope.projects = response;*/
+                         
+                         alert("Task created successfully !!!");
+                         
+                 }).error(function(error){
+                            alert("error : task ");
+                 });         
+                };
     
     });
 
