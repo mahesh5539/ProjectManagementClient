@@ -193,29 +193,25 @@ ul.dropdown-cart li .item-right button{
         
     </tr>
     <tr ng-repeat="project in projects  | filter: searchKeyword ">
-
-        <td>
+	     <td>
             <a href= "">{{project.title}}</a>
-            <p hidden>{{project.Id}}</p>
+            <p hidden>{{project.id}}</p>
         </td>
         <td>
             <p>{{project.description}}</p>
         </td>
+        
         <td>
-            <input name="textinput1" data-ng-model="state" style="height:35px; width:80px;" class="form-control input-lg" type="text" list="textinput1" value={{project.state}}>
-            <datalist id="textinput1">
-                <option ng-click="dropboxitemselected()" value="A +ve">
-                <option value="A -ve">
-                <option value="B +ve">
-                <option value="B -ve">
-                <option value="AB +ve">
-                <option value="AB -ve">
-                <option value="O +ve">
-                <option value="O -ve">
-            </datalist>
+			<p>{{project.state}}</p>
+			<select ng-model="project.state" ng-change="changeState(project.state,project.id)">
+			    <option value="Planning">Planning</option>
+			    <option value="Ongoing">Ongoing</option>
+			    <option value="Completed">Completed</option>
+			    <option value="Cancelled">Cancelled</option>
+			</select>
         </td>
         <td>
-            <button type="button" ng-click="deleteProject(project.Id)" class="btn btn-primary">Delete</button>
+            <button type="button" ng-click="deleteProject(project.id)" class="btn btn-primary">Delete</button>
         </td>
         <td>
             <div class="progress">
@@ -247,17 +243,17 @@ ul.dropdown-cart li .item-right button{
 	var emailId = $("#emailValue").val();
     var helloApp = angular.module("projectHomeApp", []);
     helloApp.controller("ProjectCtrl", function($scope, $http) {
+    
+        $scope.deleteProject = function (id) {
 
-        $scope.deleteProject = function (Id) {
-
-           // alert("sending delete request "+Id);
+           alert("sending delete request "+id);
             if (confirm("You want to delete selected project ???") == true) {
 
                 $http({
                     method: 'DELETE',
-                    url: 'http://localhost:8080/api/v1/project/' + Id + '/' + emailId
+                    url: 'http://localhost:8080/api/v1/project/' + id + '/' + emailId + '/'
                 }).success(function (response) {
-
+				$scope.loadProjects();
 
                 }).error(function (error) {
                     alert("error");
@@ -266,7 +262,7 @@ ul.dropdown-cart li .item-right button{
                 alert("You pressed Cancel!");
             }
 
-        }
+        }/*
           $scope.projects = [
               {
                   'Id':'2',
@@ -298,7 +294,7 @@ ul.dropdown-cart li .item-right button{
                   'description': 'fifth project',
                   'state': 'planning'
               },
-          ];
+          ]; */
         $scope.addRow = function () {
             $scope.projects.push({'Title': $scope.title, 'Description': $scope.description, 'State': $scope.state});
             $scope.title = '';
@@ -324,7 +320,7 @@ ul.dropdown-cart li .item-right button{
  	        $scope.loadProjects= function(){
             $http({
                 method: 'GET',
-                url: 'http://localhost:8080/api/v1/project/' + emailId
+                url: 'http://localhost:8080/api/v1/project/' + emailId + '/'
              }).success(function(response){
                          $scope.projects = response;
             }).error(function(error){
@@ -333,6 +329,21 @@ ul.dropdown-cart li .item-right button{
             });         
             };
             
+            $scope.changeState = function(state,id){
+            alert("project State is "+state);
+            alert("---id---"+id);
+	            $http({
+	               method: 'PUT',
+	                url: 'http://localhost:8080/api/v1/project/' + id + '/' + state 
+	           }).success(function(response){
+	           	   alert('success fully updated');
+	               $scope.projects = response;
+	           }).error(function(error){
+	               console.log("we are in error!!");
+               alert("error");
+	           });
+        };
+            
             $scope.addProject= function(){ 
               var title = $scope.projectTitle;
               var description = $scope.projectDesc;
@@ -340,7 +351,7 @@ ul.dropdown-cart li .item-right button{
               
               $http({
                 method: 'POST',
-                url: 'http://localhost:8080/api/v1/project/'+title+'/'+description+'/'+state+'/'+emailId                                    
+                url: 'http://localhost:8080/api/v1/project/'+title+'/'+description+'/'+state+'/'+emailId + '/'                                   
                }).success(function(response){
                          $scope.projectTitle='';
                          $scope.projectDesc='';
