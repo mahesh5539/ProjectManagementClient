@@ -464,9 +464,9 @@ function drop(ev) {
                 "width: 246px; min-width: 246px; max-width: 246px;">
                     
                         <div id="first_column" class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div ng-repeat="task in tasks1">
+                            <div ng-repeat="task in tasks">
                             
-                                <div ng-if="isNew(task.title, task.desc, task.assignee, task.state, task.estimate, task.actual)">
+                                <div ng-if="isNew(task.title, task.description, task.assignee, task.state, task.estimate, task.actual)">
                             <div id="task1" class="taskborder" draggable="true" ondragstart="drag(event)">
                                 <div class="head" style="background-color: #286090; border-radius: 3%;">
                                     <span class="task_context">&nbsp;</span>
@@ -489,7 +489,7 @@ function drop(ev) {
                                 </div>
                                 
                                 <div class="details"></div>                                
-                                    <p hidden ng-model="ngDesc">{{task.desc}}</p>                                
+                                    <p hidden ng-model="ngDesc">{{task.description}}</p>                                
                                     <p hidden ng-model="ngState">{{task.state}}</p>
                                     <p hidden ng-model="ngEstimate">{{task.estimate}}</p>
                                     <p hidden ng-model="ngActual">{{task.actual}}</p>
@@ -505,8 +505,8 @@ function drop(ev) {
                       
                         <div id="second_column" class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
                             
-                            <div ng-repeat="task in tasks2">
-                                <div ng-if="isAssigneed(task.title, task.desc, task.assignee, task.state, task.estimate, task.actual)">
+                            <div ng-repeat="task in tasks">
+                                <div ng-if="isAssigneed(task.title, task.description, task.assignee, task.state, task.estimate, task.actual)">
                             <div id="task2" class="taskborder" draggable="true" ondragstart="drag(event)">
                                 <div class="head" style="background-color: #286090; border-radius: 3%;">
                                     <span class="task_context">&nbsp;</span>
@@ -529,7 +529,7 @@ function drop(ev) {
                                 </div>
                                 
                                 <div class="details"></div>                                
-                                    <p hidden ng-model="ngDesc">{{task.desc}}</p>                                
+                                    <p hidden ng-model="ngDesc">{{task.description}}</p>                                
                                     <p hidden ng-model="ngState">{{task.state}}</p>
                                     <p hidden ng-model="ngEstimate">{{task.estimate}}</p>
                                     <p hidden ng-model="ngActual">{{task.actual}}</p>
@@ -545,8 +545,8 @@ function drop(ev) {
                 "width: 246px; min-width: 246px; max-width: 246px;">
                     
                         <div id="third_column" class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div ng-repeat="task in tasks3">
-                                <div ng-if="isStarted(task.title, task.desc, task.assignee, task.state, task.estimate, task.actual)">
+                            <div ng-repeat="task in tasks">
+                                <div ng-if="isStarted(task.title, task.description, task.assignee, task.state, task.estimate, task.actual)">
                             
                             <div id="task3" class="taskborder" draggable="true" ondragstart="drag(event)">
                                 <div class="head" style="background-color: #286090; border-radius: 3%;">
@@ -570,7 +570,7 @@ function drop(ev) {
                                 </div>
                                 
                                 <div class="details"></div>                                
-                                    <p hidden ng-model="ngDesc">{{task.desc}}</p>                                
+                                    <p hidden ng-model="ngDesc">{{task.description}}</p>                                
                                     <p hidden ng-model="ngState">{{task.state}}</p>
                                     <p hidden ng-model="ngEstimate">{{task.estimate}}</p>
                                     <p hidden ng-model="ngActual">{{task.actual}}</p>
@@ -586,8 +586,8 @@ function drop(ev) {
                 "width: 246px; min-width: 246px; max-width: 246px;">
                    
                         <div id="fourth_column" class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div ng-repeat="task in tasks4">
-                                <div ng-if="isFinished(task.title, task.desc, task.assignee, task.state, task.estimate, task.actual)">
+                            <div ng-repeat="task in tasks">
+                                <div ng-if="isFinished(task.title, task.description, task.assignee, task.state, task.estimate, task.actual)">
                             
                             <div id="task4" class="taskborder" draggable="true" ondragstart="drag(event)">
                                 <div class="head" style="background-color: #286090; border-radius: 3%;">
@@ -611,7 +611,7 @@ function drop(ev) {
                                 </div>
                                 
                                 <div class="details"></div>                                
-                                    <p hidden ng-model="ngDesc">{{task.desc}}</p>                                
+                                    <p hidden ng-model="ngDesc">{{task.description}}</p>                                
                                     <p hidden ng-model="ngState">{{task.state}}</p>
                                     <p hidden ng-model="ngEstimate">{{task.estimate}}</p>
                                     <p hidden ng-model="ngActual">{{task.actual}}</p>
@@ -627,8 +627,8 @@ function drop(ev) {
                 "width: 246px; min-width: 246px; max-width: 246px;">
                    
                         <div id="fifth_column" class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
-                   <div ng-repeat="task in tasks5">
-                   <div ng-if="isCancelled(task.title, task.desc, task.assignee, task.state, task.estimate, task.actual)">
+                   <div ng-repeat="task in tasks">
+                   <div ng-if="isCancelled(task.title, task.description, task.assignee, task.state, task.estimate, task.actual)">
                             
 
                             <div id="task5" class="taskborder" draggable="true" ondragstart="drag(event)">
@@ -653,7 +653,7 @@ function drop(ev) {
                                 </div>
                                 
                                 <div class="details"></div>                                
-                                    <p hidden ng-model="ngDesc">{{task.desc}}</p>                                
+                                    <p hidden ng-model="ngDesc">{{task.description}}</p>                                
                                     <p hidden ng-model="ngState">{{task.state}}</p>
                                     <p hidden ng-model="ngEstimate">{{task.estimate}}</p>
                                     <p hidden ng-model="ngActual">{{task.actual}}</p>
@@ -870,11 +870,11 @@ var projectIdValue = $("#projectId").val();
               var TaskAssignee = $scope.taskAsignee;
               var TaskEstimate = $scope.taskEstimate;
               var TaskActual = $scope.taskActual;
-              var TaskState = 'New';
+              var TaskState = 'new';
               var ProjectId= '1';
               alert("inside task");
               $http({
-                method: 'PUT',
+                method: 'POST',
                 url: 'http://localhost:8080/api/tc/'+TaskTitle+'/'+TaskDescription+'/'+TaskAssignee+'/'+TaskState+'/'+ TaskEstimate+'/'+TaskActual+'/'+ProjectId+'/'
                 //{TaskTitle}/{TaskDescription}/{TaskAssignee}/{TaskState}/{TaskEstimate}/{TaskActual}/{ProjectId}/                                   
                }).success(function(response){
@@ -945,15 +945,62 @@ var projectIdValue = $("#projectId").val();
                         
                  //    }
 
-                  $scope.isNew = function(title,desc,assignee,state,estimate,actual) {
+                  // $scope.isNew = function(title,description,assignee,state,estimate,actual) {
+                  //       // if(state=='new'){
+                  //       //     displayNew(title,desc,assignee,state,estimate,actual);  
+                  //       //     return true;  
+                  //       // }
+                  //       return state=="new";
+                        
+                  //   }
+                  //   $scope.isAssigneed= function(title,description,assignee,state,estimate,actual) {
+                  //       // if(state=='assigned'){
+                  //       //     displayAssigned(title,desc,assignee,state,estimate,actual);
+                  //       //     return true;
+                  //       // }
+                  //       return state=="assigned";
+                        
+                  //   }
+                  //   $scope.isStarted= function(title,description,assignee,state,estimate,actual) {
+                  //       // if(state=='started'){
+                  //       //     displayStarted(title,desc,assignee,state,estimate,actual);
+                  //       //     return true;
+                  //       // }
+                  //       return state=="started";
+                        
+                  //   }
+                  //   $scope.isFinished= function(title,description,assignee,state,estimate,actual) {
+                  //       // if(state=='finished'){
+                  //       //     displayFinished(title,desc,assignee,state,estimate,actual);
+                  //       //     return true;
+                  //       // }
+                  //       return state=="finished";
+                  //   }
+                  //   $scope.isCancelled= function(title,description,assignee,state,estimate,actual) {
+                  //       // if(state=='cancelled'){
+                  //       //     displayCancelled(title,desc,assignee,state,estimate,actual);
+                  //       //     return true;
+                  //       // }
+                  //       return state=="cancelled";
+                  //   }
+			var projectId = projectIdValue; 
+                     $http({
+                method: 'GET',
+                url: 'http://localhost:8080/api/tc/tasks/'+projectId
+                                              
+               }).success(function(response){
+
+                    $scope.tasks = response;
+                       
+                        $scope.isNew = function(title,description,assignee,state,estimate,actual) {
                         // if(state=='new'){
                         //     displayNew(title,desc,assignee,state,estimate,actual);  
                         //     return true;  
                         // }
-                        return state=="new";
+                        return state=="New";
                         
                     }
-                    $scope.isAssigneed= function(title,desc,assignee,state,estimate,actual) {
+                    $scope.isAssigneed= function(title,description,assignee,state,estimate,actual) {
                         // if(state=='assigned'){
                         //     displayAssigned(title,desc,assignee,state,estimate,actual);
                         //     return true;
@@ -961,7 +1008,7 @@ var projectIdValue = $("#projectId").val();
                         return state=="assigned";
                         
                     }
-                    $scope.isStarted= function(title,desc,assignee,state,estimate,actual) {
+                    $scope.isStarted= function(title,description,assignee,state,estimate,actual) {
                         // if(state=='started'){
                         //     displayStarted(title,desc,assignee,state,estimate,actual);
                         //     return true;
@@ -969,371 +1016,324 @@ var projectIdValue = $("#projectId").val();
                         return state=="started";
                         
                     }
-                    $scope.isFinished= function(title,desc,assignee,state,estimate,actual) {
+                    $scope.isFinished= function(title,description,assignee,state,estimate,actual) {
                         // if(state=='finished'){
                         //     displayFinished(title,desc,assignee,state,estimate,actual);
                         //     return true;
                         // }
                         return state=="finished";
                     }
-                    $scope.isCancelled= function(title,desc,assignee,state,estimate,actual) {
+                    $scope.isCancelled= function(title,description,assignee,state,estimate,actual) {
                         // if(state=='cancelled'){
                         //     displayCancelled(title,desc,assignee,state,estimate,actual);
                         //     return true;
                         // }
                         return state=="cancelled";
                     }
-			// var projectId = projectIdValue; 
-   //                   $http({
-   //              method: 'GET',
-   //              url: 'http://localhost:8080/api/v1/tasks/'+projectId
-                                              
-   //             }).success(function(response){
-
-   //                  $scope.tasks = response;
-                       
-   //                      $scope.isNew = function(title,desc,assignee,state,estimate,actual) {
-   //                      // if(state=='new'){
-   //                      //     displayNew(title,desc,assignee,state,estimate,actual);  
-   //                      //     return true;  
-   //                      // }
-   //                      return state=="new";
-                        
-   //                  }
-   //                  $scope.isAssigneed= function(title,desc,assignee,state,estimate,actual) {
-   //                      // if(state=='assigned'){
-   //                      //     displayAssigned(title,desc,assignee,state,estimate,actual);
-   //                      //     return true;
-   //                      // }
-   //                      return state=="assigned";
-                        
-   //                  }
-   //                  $scope.isStarted= function(title,desc,assignee,state,estimate,actual) {
-   //                      // if(state=='started'){
-   //                      //     displayStarted(title,desc,assignee,state,estimate,actual);
-   //                      //     return true;
-   //                      // }
-   //                      return state=="started";
-                        
-   //                  }
-   //                  $scope.isFinished= function(title,desc,assignee,state,estimate,actual) {
-   //                      // if(state=='finished'){
-   //                      //     displayFinished(title,desc,assignee,state,estimate,actual);
-   //                      //     return true;
-   //                      // }
-   //                      return state=="finished";
-   //                  }
-   //                  $scope.isCancelled= function(title,desc,assignee,state,estimate,actual) {
-   //                      // if(state=='cancelled'){
-   //                      //     displayCancelled(title,desc,assignee,state,estimate,actual);
-   //                      //     return true;
-   //                      // }
-   //                      return state=="cancelled";
-   //                  }
                        
                          
-   //               }).error(function(error){
-   //                          alert("error : task ");
-   //               });        
+                 }).error(function(error){
+                            alert("error : task ");
+                 });        
 
                     };
 
 
-                 $scope.tasks1 = [
-                      { 
-                          'taskID':'1',
-                          'title': 'Infy project',
-                          'desc': 'first project',
-                          'assignee': 'None',
-                          'state': 'new',
-                          'estimate': '2 days',
-                          'actual': '2 days'
-                      },
+                 // $scope.tasks1 = [
+                 //      { 
+                 //          'taskID':'1',
+                 //          'title': 'Infy project',
+                 //          'desc': 'first project',
+                 //          'assignee': 'None',
+                 //          'state': 'new',
+                 //          'estimate': '2 days',
+                 //          'actual': '2 days'
+                 //      },
 
-                      {
-                          'taskID':'2',
-                          'title': 'Cognizant Tech',
-                          'desc': 'second project',
-                          'assignee': 'Mahesh',
-                          'state': 'assigned',
-                          'estimate': '5 days',
-                          'actual': '5 days'
-                      },
-                       {
-                          'taskID':'2',
-                          'title': 'sjsu proj',
-                          'desc': 'second project',
-                          'assignee': 'Arjun',
-                          'state': 'assigned',
-                          'estimate': '5 days',
-                          'actual': '5 days'
-                      },
+                 //      {
+                 //          'taskID':'2',
+                 //          'title': 'Cognizant Tech',
+                 //          'desc': 'second project',
+                 //          'assignee': 'Mahesh',
+                 //          'state': 'assigned',
+                 //          'estimate': '5 days',
+                 //          'actual': '5 days'
+                 //      },
+                 //       {
+                 //          'taskID':'2',
+                 //          'title': 'sjsu proj',
+                 //          'desc': 'second project',
+                 //          'assignee': 'Arjun',
+                 //          'state': 'assigned',
+                 //          'estimate': '5 days',
+                 //          'actual': '5 days'
+                 //      },
                      
 
-                      {
-                          'taskID':'3',
-                          'title': 'Wipro',
-                          'desc': 'third project',
-                          'assignee': 'Arjun',
-                          'state': 'started',
-                          'estimate': '8 days',
-                          'actual': '9 days'
-                      },
-                      {
-                          'taskID':'4',
-                          'title': 'Tcs',
-                          'desc': 'fourth project',
-                          'assignee': 'Dinesh',
-                          'state': 'finished',
-                          'estimate': '3 days',
-                          'actual': '5 days'
-                      },
-                      {
-                          'taskID':'5',
-                          'title': 'HCL Technologies',
-                          'desc': 'fifth project',
-                          'assignee': 'Vaibhav',
-                          'state': 'cancelled',
-                          'estimate': '3 days',
-                          'actual': '5 days'
-                      }
-                  ];
-                  $scope.tasks2 = [
-                      { 
-                          'taskID':'1',
-                          'title': 'Infy project',
-                          'desc': 'first project',
-                          'assignee': 'None',
-                          'state': 'new',
-                          'estimate': '2 days',
-                          'actual': '2 days'
-                      },
+                 //      {
+                 //          'taskID':'3',
+                 //          'title': 'Wipro',
+                 //          'desc': 'third project',
+                 //          'assignee': 'Arjun',
+                 //          'state': 'started',
+                 //          'estimate': '8 days',
+                 //          'actual': '9 days'
+                 //      },
+                 //      {
+                 //          'taskID':'4',
+                 //          'title': 'Tcs',
+                 //          'desc': 'fourth project',
+                 //          'assignee': 'Dinesh',
+                 //          'state': 'finished',
+                 //          'estimate': '3 days',
+                 //          'actual': '5 days'
+                 //      },
+                 //      {
+                 //          'taskID':'5',
+                 //          'title': 'HCL Technologies',
+                 //          'desc': 'fifth project',
+                 //          'assignee': 'Vaibhav',
+                 //          'state': 'cancelled',
+                 //          'estimate': '3 days',
+                 //          'actual': '5 days'
+                 //      }
+                 //  ];
+                 //  $scope.tasks2 = [
+                 //      { 
+                 //          'taskID':'1',
+                 //          'title': 'Infy project',
+                 //          'desc': 'first project',
+                 //          'assignee': 'None',
+                 //          'state': 'new',
+                 //          'estimate': '2 days',
+                 //          'actual': '2 days'
+                 //      },
 
-                      {
-                          'taskID':'2',
-                          'title': 'Cognizant Tech',
-                          'desc': 'second project',
-                          'assignee': 'Mahesh',
-                          'state': 'assigned',
-                          'estimate': '5 days',
-                          'actual': '5 days'
-                      },
-                       {
-                          'taskID':'2',
-                          'title': 'sjsu proj',
-                          'desc': 'second project',
-                          'assignee': 'Arjun',
-                          'state': 'assigned',
-                          'estimate': '5 days',
-                          'actual': '5 days'
-                      },
+                 //      {
+                 //          'taskID':'2',
+                 //          'title': 'Cognizant Tech',
+                 //          'desc': 'second project',
+                 //          'assignee': 'Mahesh',
+                 //          'state': 'assigned',
+                 //          'estimate': '5 days',
+                 //          'actual': '5 days'
+                 //      },
+                 //       {
+                 //          'taskID':'2',
+                 //          'title': 'sjsu proj',
+                 //          'desc': 'second project',
+                 //          'assignee': 'Arjun',
+                 //          'state': 'assigned',
+                 //          'estimate': '5 days',
+                 //          'actual': '5 days'
+                 //      },
                      
 
-                      {
-                          'taskID':'3',
-                          'title': 'Wipro',
-                          'desc': 'third project',
-                          'assignee': 'Arjun',
-                          'state': 'started',
-                          'estimate': '8 days',
-                          'actual': '9 days'
-                      },
-                      {
-                          'taskID':'4',
-                          'title': 'Tcs',
-                          'desc': 'fourth project',
-                          'assignee': 'Dinesh',
-                          'state': 'finished',
-                          'estimate': '3 days',
-                          'actual': '5 days'
-                      },
-                      {
-                          'taskID':'5',
-                          'title': 'HCL Technologies',
-                          'desc': 'fifth project',
-                          'assignee': 'Vaibhav',
-                          'state': 'cancelled',
-                          'estimate': '3 days',
-                          'actual': '5 days'
-                      }
-                  ];
-                  $scope.tasks3 = [
-                      { 
-                          'taskID':'1',
-                          'title': 'Infy project',
-                          'desc': 'first project',
-                          'assignee': 'None',
-                          'state': 'new',
-                          'estimate': '2 days',
-                          'actual': '2 days'
-                      },
+                 //      {
+                 //          'taskID':'3',
+                 //          'title': 'Wipro',
+                 //          'desc': 'third project',
+                 //          'assignee': 'Arjun',
+                 //          'state': 'started',
+                 //          'estimate': '8 days',
+                 //          'actual': '9 days'
+                 //      },
+                 //      {
+                 //          'taskID':'4',
+                 //          'title': 'Tcs',
+                 //          'desc': 'fourth project',
+                 //          'assignee': 'Dinesh',
+                 //          'state': 'finished',
+                 //          'estimate': '3 days',
+                 //          'actual': '5 days'
+                 //      },
+                 //      {
+                 //          'taskID':'5',
+                 //          'title': 'HCL Technologies',
+                 //          'desc': 'fifth project',
+                 //          'assignee': 'Vaibhav',
+                 //          'state': 'cancelled',
+                 //          'estimate': '3 days',
+                 //          'actual': '5 days'
+                 //      }
+                 //  ];
+                 //  $scope.tasks3 = [
+                 //      { 
+                 //          'taskID':'1',
+                 //          'title': 'Infy project',
+                 //          'desc': 'first project',
+                 //          'assignee': 'None',
+                 //          'state': 'new',
+                 //          'estimate': '2 days',
+                 //          'actual': '2 days'
+                 //      },
 
-                      {
-                          'taskID':'2',
-                          'title': 'Cognizant Tech',
-                          'desc': 'second project',
-                          'assignee': 'Mahesh',
-                          'state': 'assigned',
-                          'estimate': '5 days',
-                          'actual': '5 days'
-                      },
-                       {
-                          'taskID':'2',
-                          'title': 'sjsu proj',
-                          'desc': 'second project',
-                          'assignee': 'Arjun',
-                          'state': 'assigned',
-                          'estimate': '5 days',
-                          'actual': '5 days'
-                      },
+                 //      {
+                 //          'taskID':'2',
+                 //          'title': 'Cognizant Tech',
+                 //          'desc': 'second project',
+                 //          'assignee': 'Mahesh',
+                 //          'state': 'assigned',
+                 //          'estimate': '5 days',
+                 //          'actual': '5 days'
+                 //      },
+                 //       {
+                 //          'taskID':'2',
+                 //          'title': 'sjsu proj',
+                 //          'desc': 'second project',
+                 //          'assignee': 'Arjun',
+                 //          'state': 'assigned',
+                 //          'estimate': '5 days',
+                 //          'actual': '5 days'
+                 //      },
                      
 
-                      {
-                          'taskID':'3',
-                          'title': 'Wipro',
-                          'desc': 'third project',
-                          'assignee': 'Arjun',
-                          'state': 'started',
-                          'estimate': '8 days',
-                          'actual': '9 days'
-                      },
-                      {
-                          'taskID':'4',
-                          'title': 'Tcs',
-                          'desc': 'fourth project',
-                          'assignee': 'Dinesh',
-                          'state': 'finished',
-                          'estimate': '3 days',
-                          'actual': '5 days'
-                      },
-                      {
-                          'taskID':'5',
-                          'title': 'HCL Technologies',
-                          'desc': 'fifth project',
-                          'assignee': 'Vaibhav',
-                          'state': 'cancelled',
-                          'estimate': '3 days',
-                          'actual': '5 days'
-                      }
-                  ];
-                  $scope.tasks4 = [
-                      { 
-                          'taskID':'1',
-                          'title': 'Infy project',
-                          'desc': 'first project',
-                          'assignee': 'None',
-                          'state': 'new',
-                          'estimate': '2 days',
-                          'actual': '2 days'
-                      },
+                 //      {
+                 //          'taskID':'3',
+                 //          'title': 'Wipro',
+                 //          'desc': 'third project',
+                 //          'assignee': 'Arjun',
+                 //          'state': 'started',
+                 //          'estimate': '8 days',
+                 //          'actual': '9 days'
+                 //      },
+                 //      {
+                 //          'taskID':'4',
+                 //          'title': 'Tcs',
+                 //          'desc': 'fourth project',
+                 //          'assignee': 'Dinesh',
+                 //          'state': 'finished',
+                 //          'estimate': '3 days',
+                 //          'actual': '5 days'
+                 //      },
+                 //      {
+                 //          'taskID':'5',
+                 //          'title': 'HCL Technologies',
+                 //          'desc': 'fifth project',
+                 //          'assignee': 'Vaibhav',
+                 //          'state': 'cancelled',
+                 //          'estimate': '3 days',
+                 //          'actual': '5 days'
+                 //      }
+                 //  ];
+                 //  $scope.tasks4 = [
+                 //      { 
+                 //          'taskID':'1',
+                 //          'title': 'Infy project',
+                 //          'desc': 'first project',
+                 //          'assignee': 'None',
+                 //          'state': 'new',
+                 //          'estimate': '2 days',
+                 //          'actual': '2 days'
+                 //      },
 
-                      {
-                          'taskID':'2',
-                          'title': 'Cognizant Tech',
-                          'desc': 'second project',
-                          'assignee': 'Mahesh',
-                          'state': 'assigned',
-                          'estimate': '5 days',
-                          'actual': '5 days'
-                      },
-                       {
-                          'taskID':'2',
-                          'title': 'sjsu proj',
-                          'desc': 'second project',
-                          'assignee': 'Arjun',
-                          'state': 'assigned',
-                          'estimate': '5 days',
-                          'actual': '5 days'
-                      },
+                 //      {
+                 //          'taskID':'2',
+                 //          'title': 'Cognizant Tech',
+                 //          'desc': 'second project',
+                 //          'assignee': 'Mahesh',
+                 //          'state': 'assigned',
+                 //          'estimate': '5 days',
+                 //          'actual': '5 days'
+                 //      },
+                 //       {
+                 //          'taskID':'2',
+                 //          'title': 'sjsu proj',
+                 //          'desc': 'second project',
+                 //          'assignee': 'Arjun',
+                 //          'state': 'assigned',
+                 //          'estimate': '5 days',
+                 //          'actual': '5 days'
+                 //      },
                      
 
-                      {
-                          'taskID':'3',
-                          'title': 'Wipro',
-                          'desc': 'third project',
-                          'assignee': 'Arjun',
-                          'state': 'started',
-                          'estimate': '8 days',
-                          'actual': '9 days'
-                      },
-                      {
-                          'taskID':'4',
-                          'title': 'Tcs',
-                          'desc': 'fourth project',
-                          'assignee': 'Dinesh',
-                          'state': 'finished',
-                          'estimate': '3 days',
-                          'actual': '5 days'
-                      },
-                      {
-                          'taskID':'5',
-                          'title': 'HCL Technologies',
-                          'desc': 'fifth project',
-                          'assignee': 'Vaibhav',
-                          'state': 'cancelled',
-                          'estimate': '3 days',
-                          'actual': '5 days'
-                      }
-                  ];
-                  $scope.tasks5 = [
-                      { 
-                          'taskID':'1',
-                          'title': 'Infy project',
-                          'desc': 'first project',
-                          'assignee': 'None',
-                          'state': 'new',
-                          'estimate': '2 days',
-                          'actual': '2 days'
-                      },
+                 //      {
+                 //          'taskID':'3',
+                 //          'title': 'Wipro',
+                 //          'desc': 'third project',
+                 //          'assignee': 'Arjun',
+                 //          'state': 'started',
+                 //          'estimate': '8 days',
+                 //          'actual': '9 days'
+                 //      },
+                 //      {
+                 //          'taskID':'4',
+                 //          'title': 'Tcs',
+                 //          'desc': 'fourth project',
+                 //          'assignee': 'Dinesh',
+                 //          'state': 'finished',
+                 //          'estimate': '3 days',
+                 //          'actual': '5 days'
+                 //      },
+                 //      {
+                 //          'taskID':'5',
+                 //          'title': 'HCL Technologies',
+                 //          'desc': 'fifth project',
+                 //          'assignee': 'Vaibhav',
+                 //          'state': 'cancelled',
+                 //          'estimate': '3 days',
+                 //          'actual': '5 days'
+                 //      }
+                 //  ];
+                 //  $scope.tasks5 = [
+                 //      { 
+                 //          'taskID':'1',
+                 //          'title': 'Infy project',
+                 //          'desc': 'first project',
+                 //          'assignee': 'None',
+                 //          'state': 'new',
+                 //          'estimate': '2 days',
+                 //          'actual': '2 days'
+                 //      },
 
-                      {
-                          'taskID':'2',
-                          'title': 'Cognizant Tech',
-                          'desc': 'second project',
-                          'assignee': 'Mahesh',
-                          'state': 'assigned',
-                          'estimate': '5 days',
-                          'actual': '5 days'
-                      },
-                       {
-                          'taskID':'2',
-                          'title': 'sjsu proj',
-                          'desc': 'second project',
-                          'assignee': 'Arjun',
-                          'state': 'assigned',
-                          'estimate': '5 days',
-                          'actual': '5 days'
-                      },
+                 //      {
+                 //          'taskID':'2',
+                 //          'title': 'Cognizant Tech',
+                 //          'desc': 'second project',
+                 //          'assignee': 'Mahesh',
+                 //          'state': 'assigned',
+                 //          'estimate': '5 days',
+                 //          'actual': '5 days'
+                 //      },
+                 //       {
+                 //          'taskID':'2',
+                 //          'title': 'sjsu proj',
+                 //          'desc': 'second project',
+                 //          'assignee': 'Arjun',
+                 //          'state': 'assigned',
+                 //          'estimate': '5 days',
+                 //          'actual': '5 days'
+                 //      },
                      
 
-                      {
-                          'taskID':'3',
-                          'title': 'Wipro',
-                          'desc': 'third project',
-                          'assignee': 'Arjun',
-                          'state': 'started',
-                          'estimate': '8 days',
-                          'actual': '9 days'
-                      },
-                      {
-                          'taskID':'4',
-                          'title': 'Tcs',
-                          'desc': 'fourth project',
-                          'assignee': 'Dinesh',
-                          'state': 'finished',
-                          'estimate': '3 days',
-                          'actual': '5 days'
-                      },
-                      {
-                          'taskID':'5',
-                          'title': 'HCL Technologies',
-                          'desc': 'fifth project',
-                          'assignee': 'Vaibhav',
-                          'state': 'cancelled',
-                          'estimate': '3 days',
-                          'actual': '5 days'
-                      }
-                  ];
+                 //      {
+                 //          'taskID':'3',
+                 //          'title': 'Wipro',
+                 //          'desc': 'third project',
+                 //          'assignee': 'Arjun',
+                 //          'state': 'started',
+                 //          'estimate': '8 days',
+                 //          'actual': '9 days'
+                 //      },
+                 //      {
+                 //          'taskID':'4',
+                 //          'title': 'Tcs',
+                 //          'desc': 'fourth project',
+                 //          'assignee': 'Dinesh',
+                 //          'state': 'finished',
+                 //          'estimate': '3 days',
+                 //          'actual': '5 days'
+                 //      },
+                 //      {
+                 //          'taskID':'5',
+                 //          'title': 'HCL Technologies',
+                 //          'desc': 'fifth project',
+                 //          'assignee': 'Vaibhav',
+                 //          'state': 'cancelled',
+                 //          'estimate': '3 days',
+                 //          'actual': '5 days'
+                 //      }
+                 //  ];
       
              
     });
