@@ -198,6 +198,26 @@ th .column_content{
     border: 1px solid;
     width: 220px;
 }
+#inviteUser{
+    position: relative;
+    background-image: url(/img/inviteUser.png);
+    background-repeat: no-repeat;
+    width:26%;
+    height: 30%; 
+}
+
+#invitebtn{
+    margin-left: 30%;
+    width: 120px;
+    height: 35px;
+} 
+#inviteEmail{
+    position: relative;
+    margin-left: 18%;
+    border: 1px solid;
+    width: 220px;
+}
+
     </style>
 
 <!-- Navbar Dropdown Cart - END -->
@@ -241,7 +261,7 @@ function drop(ev) {
   });
     </script>
   </head>
-    <body ng-controller="TaskCtrl">
+    <body ng-controller="TaskCtrl" ng-init="getAllTasks()">
 
 <!-- Navbar Dropdown Cart - START -->
 
@@ -265,9 +285,14 @@ function drop(ev) {
         <button id="btnGo"class="btn btn-default" type="button">Go!</button>
       </span>
     </div><!-- /input-group -->
-    
-    <div style="color:white; position:absolute; margin-left:70%; margin-top:1%;"id="usernameDiv">
-       <p>Username: mahesh5539</p> 
+    <div id="notifications" style="color:white;position:absolute; margin-left:63%; margin-top:1%;">
+        <p href="">Notifications:</p>
+    </div>
+    <div id="notifications_sign" style="color:white;position:absolute; margin-left:69%; margin-top:1%;">
+        <a href=""><span style="font-size:20px;color:#337ab7"class="glyphicon glyphicon-globe"></span></a>
+    </div>
+    <div style="color:white; position:absolute; margin-left:72%; margin-top:1%;"id="usernameDiv">
+       <p>User: mahesh5539</p> 
     </div>
 
     <div style="margin-top:1%"class="pull-right">
@@ -277,16 +302,51 @@ function drop(ev) {
 </nav>
 
   <div style="position:absolute;padding-top:0px;"class="container">
+
     <div class="row"> 
         <div id="projectNameId">
             <p>CMPE 275 Project</p>
         </div>
+        
+
         <div id="inviteUserId" class="col-lg-6">
             
-            <p><span style="color:#286090;"class="glyphicon glyphicon-user"></span><a href=""> Invite Users</a></p>
+            <!-- <p><span style="color:#286090;" data-toggle="modal" data-target="#invite_modal" class="glyphicon glyphicon-user"></span><a href=""> Invite Users</a></p> -->
+             <p data-toggle="modal" data-target="#inviteModal"><a href=""> <span class="glyphicon glyphicon-user"></span> Invite Users</a></p>
+            <div class="modal fade inviteModal" id="inviteModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div  class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Invite Users</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form role="form">
+                      
+                        <div class="form-group">
+                            <label for="actual">Email Id</label>
+                            <input ng-model="inviteEmail" type="text" class="form-control" id="actual" placeholder="Enter Email Id" />
+                        </div>
+                        <button id="invite_user_btn" ng-click="inviteUsers()" type="submit" class="btn btn-primary" data-dismiss="modal">Invite User</button>
+                    </form>
+
+
+                </div>
+               <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>-->
+            </div>
+
         </div>
+    </div>
+
+        </div>
+
         <div id="newTaskBtn" class="col-lg-6">
-            <p class="pull-right"data-toggle="modal" data-target="#taskModal"><a href=""> <span class="glyphicon glyphicon-plus"></span> New Task</a></p>
+            <p class="pull-right" data-toggle="modal" data-target="#taskModal"><a href=""> <span class="glyphicon glyphicon-plus"></span> New Task</a></p>
             <div class="modal fade taskModal" id="taskModal" role="dialog">
         <div class="modal-dialog">
 
@@ -396,163 +456,201 @@ function drop(ev) {
          
                
             </tr>
-                  <th class="expand" colspan="1" data-tasksperow="1" id="done_9"
+                  <th class="expand" colspan="1" data-tasksperow="1" id="done_1"
                 rowspan="1" style=
                 "width: 246px; min-width: 246px; max-width: 246px;">
-                    <div id="first_column" class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div ng-repeat="task in tasks">
+                        <div id="first_column" class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <div ng-if="isNew(task.title, task.desc, task.assignee, task.state, task.estimate, task.actual)">
+                            </div>
 
-                        <div id="task1" class="taskborder" draggable="true" ondragstart="drag(event)">
-                            <div class="head" style="background-color: #286090; border-radius: 3%;">
-                                <span class="task_context">&nbsp;</span>
-                                <div class="task_tab">
-                                    <strong class="task_id" style="color: #FFFFFF">ID 13</strong>
-                                </div>
-                                <div class="assignee" style="color: #FFFFFF">
-                                    <span>None</span>
-                                    <span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span>
-                                </div>
+                          <!--   <div id="task1" class="taskborder" draggable="true" ondragstart="drag(event)">
+                                <div class="head" style="background-color: #286090; border-radius: 3%;">
+                                    <span class="task_context">&nbsp;</span>
+                                    <div class="task_tab">
+                                        <strong class="task_id" style="color: #FFFFFF">{{task.taskID}}</strong>
+                                    </div>
+                                    <div class="assignee" style="color: #FFFFFF">
+                                        <span>{{task.assignee}}</span>
+                                        <span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span>
+                                    </div>
 
-                            </div>
-                            <div class="body">
-                                <img alt="" class="avatar" src=
-                                "https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"
-                                width="30">
-                                <div class="title">
-                                    FirstTask
                                 </div>
-                            </div>
-                            
-                            <div class="details"></div>
-                            <ul></ul>
-                        </div>
-
-                        <div id="task2" class="taskborder" draggable="true" ondragstart="drag(event)">
-                            <div class="head" style="background-color: #286090; border-radius: 3%;">
-                                <span class="task_context">&nbsp;</span>
-                                <div class="task_tab">
-                                    <strong class="task_id" style="color: #FFFFFF">ID 13</strong>
+                                <div class="body">
+                                    <img alt="" class="avatar" src=
+                                    "https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"
+                                    width="30">
+                                    <div class="title">
+                                        {{task.title}}
+                                    </div>
                                 </div>
-                                <div class="assignee" style="color: #FFFFFF">
-                                    <span>None</span>
-                                    <span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span>
-                                </div>
-
-                            </div>
-                            <div class="body">
-                                <img alt="" class="avatar" src=
-                                "https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"
-                                width="30">
-                                <div class="title">
-                                    secondTask
-                                </div>
-                            </div>
-                            
-                            <div class="details"></div>
-                            <ul></ul>
-                        </div>
-                    
-                     
-                        <div id="task5" class="taskborder" draggable="true" ondragstart="drag(event)">
-                            <div class="head" style="background-color: #286090; border-radius: 3%;">
-                                <span class="task_context">&nbsp;</span>
-                                <div class="task_tab">
-                                    <strong class="task_id" style="color: #FFFFFF">ID 13</strong>
-                                </div>
-                                <div class="assignee" style="color: #FFFFFF">
-                                    <span>None</span>
-                                    <span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span>
-                                </div>
-
-                            </div>
-                            <div class="body">
-                                <img alt="" class="avatar" src=
-                                "https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"
-                                width="30">
-                                <div class="title">
-                                    FifthTask
-                                </div>
-                            </div>
-                            
-                            <div class="details"></div>
-                            <ul></ul>
-                        </div>
-                        <div id="task6" class="taskborder" draggable="true" ondragstart="drag(event)">
-                            <div class="head" style="background-color: #286090; border-radius: 3%;">
-                                <span class="task_context">&nbsp;</span>
-                                <div class="task_tab">
-                                    <strong class="task_id" style="color: #FFFFFF">ID 13</strong>
-                                </div>
-                                <div class="assignee" style="color: #FFFFFF">
-                                    <span>None</span>
-                                    <span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span>
-                                </div>
-
-                            </div>
-                            <div class="body">
-                                <img alt="" class="avatar" src=
-                                "https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"
-                                width="30">
-                                <div class="title">
-                                    SixthTask
-                                </div>
-                            </div>
-                            
-                            <div class="details"></div>
-                            <ul></ul>
-                        </div>
-                        <div id="task7" class="taskborder" draggable="true" ondragstart="drag(event)">
-                            <div class="head" style="background-color: #286090; border-radius: 3%;">
-                                <span class="task_context">&nbsp;</span>
-                                <div class="task_tab">
-                                    <strong class="task_id" style="color: #FFFFFF">ID 13</strong>
-                                </div>
-                                <div class="assignee" style="color: #FFFFFF">
-                                    <span>None</span>
-                                    <span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span>
-                                </div>
-
-                            </div>
-                            <div class="body">
-                                <img alt="" class="avatar" src=
-                                "https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"
-                                width="30">
-                                <div class="title">
-                                    seventhTask
-                                </div>
-                            </div>
-                            
-                            <div class="details"></div>
-                            <ul></ul>
-                        </div>
-                    </div>                   
+                                
+                                <div class="details"></div>                                
+                                    <p hidden ng-model="ngDesc">{{task.desc}}</p>                                
+                                    <p hidden ng-model="ngState">{{task.state}}</p>
+                                    <p hidden ng-model="ngEstimate">{{task.estimate}}</p>
+                                    <p hidden ng-model="ngActual">{{task.actual}}</p>
+                                <ul></ul>
+                            </div>  -->   
+                        </div> 
+                    </div>
                 </th>
                 <th class="expand" colspan="1" data-tasksperow="1" id="done_9"
                 rowspan="1" style=
                 "width: 246px; min-width: 246px; max-width: 246px;">
-                    <div id="second_column" class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        
-                    </div>                   
+                      <div ng-repeat="task in tasks">
+                        <div id="second_column" class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <div ng-if="isAssigneed(task.title, task.desc, task.assignee, task.state, task.estimate, task.actual)">
+                            </div>
+                          <!--   <div id="task2" class="taskborder" draggable="true" ondragstart="drag(event)">
+                                <div class="head" style="background-color: #286090; border-radius: 3%;">
+                                    <span class="task_context">&nbsp;</span>
+                                    <div class="task_tab">
+                                        <strong class="task_id" style="color: #FFFFFF">{{task.taskID}}</strong>
+                                    </div>
+                                    <div class="assignee" style="color: #FFFFFF">
+                                        <span>{{task.assignee}}</span>
+                                        <span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span>
+                                    </div>
+
+                                </div>
+                                <div class="body">
+                                    <img alt="" class="avatar" src=
+                                    "https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"
+                                    width="30">
+                                    <div class="title">
+                                        {{task.title}}
+                                    </div>
+                                </div>
+                                
+                                <div class="details"></div>                                
+                                    <p hidden ng-model="ngDesc">{{task.desc}}</p>                                
+                                    <p hidden ng-model="ngState">{{task.state}}</p>
+                                    <p hidden ng-model="ngEstimate">{{task.estimate}}</p>
+                                    <p hidden ng-model="ngActual">{{task.actual}}</p>
+                                <ul></ul>
+                            </div> -->    
+                        </div> 
+                    </div>
+                 
+                </th> 
+                <th class="expand" colspan="1" data-tasksperow="1" id="done_9"
+                rowspan="1" style=
+                "width: 246px; min-width: 246px; max-width: 246px;">
+                    <div ng-repeat="task in tasks">
+                        <div id="third_column" class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <div ng-if="isStarted(task.title, task.desc, task.assignee, task.state, task.estimate, task.actual)">
+                            </div>
+                           <!--  <div id="task3" class="taskborder" draggable="true" ondragstart="drag(event)">
+                                <div class="head" style="background-color: #286090; border-radius: 3%;">
+                                    <span class="task_context">&nbsp;</span>
+                                    <div class="task_tab">
+                                        <strong class="task_id" style="color: #FFFFFF">{{task.taskID}}</strong>
+                                    </div>
+                                    <div class="assignee" style="color: #FFFFFF">
+                                        <span>{{task.assignee}}</span>
+                                        <span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span>
+                                    </div>
+
+                                </div>
+                                <div class="body">
+                                    <img alt="" class="avatar" src=
+                                    "https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"
+                                    width="30">
+                                    <div class="title">
+                                        {{task.title}}
+                                    </div>
+                                </div>
+                                
+                                <div class="details"></div>                                
+                                    <p hidden ng-model="ngDesc">{{task.desc}}</p>                                
+                                    <p hidden ng-model="ngState">{{task.state}}</p>
+                                    <p hidden ng-model="ngEstimate">{{task.estimate}}</p>
+                                    <p hidden ng-model="ngActual">{{task.actual}}</p>
+                                <ul></ul>
+                            </div>  -->   
+                        </div> 
+                    </div>
+                   
                 </th>
                 <th class="expand" colspan="1" data-tasksperow="1" id="done_9"
                 rowspan="1" style=
                 "width: 246px; min-width: 246px; max-width: 246px;">
-                    <div class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        
-                    </div>                   
+                   <div ng-repeat="task in tasks">
+                        <div id="fourth_column" class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <div ng-if="isFinished(task.title, task.desc, task.assignee, task.state, task.estimate, task.actual)">
+                            </div>
+                          <!--   <div id="task4" class="taskborder" draggable="true" ondragstart="drag(event)">
+                                <div class="head" style="background-color: #286090; border-radius: 3%;">
+                                    <span class="task_context">&nbsp;</span>
+                                    <div class="task_tab">
+                                        <strong class="task_id" style="color: #FFFFFF">{{task.taskID}}</strong>
+                                    </div>
+                                    <div class="assignee" style="color: #FFFFFF">
+                                        <span>{{task.assignee}}</span>
+                                        <span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span>
+                                    </div>
+
+                                </div>
+                                <div class="body">
+                                    <img alt="" class="avatar" src=
+                                    "https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"
+                                    width="30">
+                                    <div class="title">
+                                        {{task.title}}
+                                    </div>
+                                </div>
+                                
+                                <div class="details"></div>                                
+                                    <p hidden ng-model="ngDesc">{{task.desc}}</p>                                
+                                    <p hidden ng-model="ngState">{{task.state}}</p>
+                                    <p hidden ng-model="ngEstimate">{{task.estimate}}</p>
+                                    <p hidden ng-model="ngActual">{{task.actual}}</p>
+                                <ul></ul>
+                            </div>  -->   
+                        </div> 
+                    </div>
+                  
                 </th>
                 <th class="expand" colspan="1" data-tasksperow="1" id="done_9"
                 rowspan="1" style=
                 "width: 246px; min-width: 246px; max-width: 246px;">
-                    <div class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        
-                    </div>                   
-                </th>
-                <th class="expand" colspan="1" data-tasksperow="1" id="done_9"
-                rowspan="1" style=
-                "width: 246px; min-width: 246px; max-width: 246px;">
-                    <div class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        
-                    </div>                   
+                   <div ng-repeat="task in tasks">
+                        <div id="fifth_column" class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <div ng-if="isCancelled(task.title, task.desc, task.assignee, task.state, task.estimate, task.actual)">
+                            </div>
+<!-- 
+                            <div id="task5" class="taskborder" draggable="true" ondragstart="drag(event)">
+                                <div class="head" style="background-color: #286090; border-radius: 3%;">
+                                    <span class="task_context">&nbsp;</span>
+                                    <div class="task_tab">
+                                        <strong class="task_id" style="color: #FFFFFF">{{task.taskID}}</strong>
+                                    </div>
+                                    <div class="assignee" style="color: #FFFFFF">
+                                        <span>{{task.assignee}}</span>
+                                        <span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span>
+                                    </div>
+
+                                </div>
+                                <div class="body">
+                                    <img alt="" class="avatar" src=
+                                    "https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"
+                                    width="30">
+                                    <div class="title">
+                                        {{task.title}}
+                                    </div>
+                                </div>
+                                
+                                <div class="details"></div>                                
+                                    <p hidden ng-model="ngDesc">{{task.desc}}</p>                                
+                                    <p hidden ng-model="ngState">{{task.state}}</p>
+                                    <p hidden ng-model="ngEstimate">{{task.estimate}}</p>
+                                    <p hidden ng-model="ngActual">{{task.actual}}</p>
+                                <ul></ul>
+                            </div>  -->   
+                        </div> 
+                    </div>
+                   
                 </th>   
             <tr>
 
@@ -711,42 +809,35 @@ function drop(ev) {
 }
 </style>
 
-<script>
-
- var helloApp = angular.module("taskHomeApp", []);
-    helloApp.controller("TaskCtrl", function($scope, $http) {
-    
-     $scope.addTask= function(){ 
-              var TaskTitle = $scope.taskTitle;
-              var TaskDescription = $scope.taskDesc;
-              var TaskAssignee = $scope.taskAsignee;
-              var TaskEstimate = $scope.taskEstimate;
-              var TaskActual = $scope.taskActual;
-              var TaskState = 'New';
-              var ProjectId= '1';
-              alert("inside task");
-              $http({
-                method: 'POST',
-                url: 'http://localhost:8080/api/tc/'+TaskTitle+'/'+TaskDescription+'/'+TaskAssignee+'/'+TaskState+'/'+ TaskEstimate+'/'+TaskActual+'/'+ProjectId+'/'
-                //{TaskTitle}/{TaskDescription}/{TaskAssignee}/{TaskState}/{TaskEstimate}/{TaskActual}/{ProjectId}/                                   
-               }).success(function(response){
-                       /*  $scope.projectTitle='';
-                         $scope.projectDesc='';
-                         $scope.projects = response;*/
-                         
-                         alert("Task created successfully !!!");
-                         
-          		 }).error(function(error){
-            				alert("error : task ");
-            	 });         
-            	};
-    
-    });
-
-</script>
 
 
-<script>
+
+<script>     
+    var counter = 1;
+    function displayNew(title,desc,assignee,state,estimate,actual){
+         var idValue = getUniqueString();      
+        $("#first_column").append('<div id="'+idValue+'" class="taskborder" draggable="true" ondragstart="drag(event)"><div class="head" style="background-color: #286090; border-radius: 3%;"><span class="task_context">&nbsp;</span><div class="task_tab"><strong class="task_id" style="color: #FFFFFF">ID 13</strong></div><div class="assignee" style="color: #FFFFFF"><span>'+assignee+'</span><span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span></div></div><div class="body"><img alt="" class="avatar" src="https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"width="30"><div class="title">'+title+'</div></div><div class="details"><p hidden ng-model="ngTitle">'+title+'</p><p hidden ng-model="ngDesc">'+desc+'</p><p hidden ng-model="ngAssignee">'+assignee+'</p><p hidden ng-model="ngState">'+state+'</p><p hidden ng-model="ngEstimate">'+estimate+'</p><p hidden ng-model="ngActual">'+actual+'</p></div><ul></ul></div>');
+    }
+
+     function displayAssigned(title,desc,assignee,state,estimate,actual){
+         var idValue = getUniqueString();      
+        $("#second_column").append('<div id="'+idValue+'" class="taskborder" draggable="true" ondragstart="drag(event)"><div class="head" style="background-color: #286090; border-radius: 3%;"><span class="task_context">&nbsp;</span><div class="task_tab"><strong class="task_id" style="color: #FFFFFF">ID 13</strong></div><div class="assignee" style="color: #FFFFFF"><span>'+assignee+'</span><span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span></div></div><div class="body"><img alt="" class="avatar" src="https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"width="30"><div class="title">'+title+'</div></div><div class="details"><p hidden ng-model="ngTitle">'+title+'</p><p hidden ng-model="ngDesc">'+desc+'</p><p hidden ng-model="ngAssignee">'+assignee+'</p><p hidden ng-model="ngState">'+state+'</p><p hidden ng-model="ngEstimate">'+estimate+'</p><p hidden ng-model="ngActual">'+actual+'</p></div><ul></ul></div>');
+    }
+
+     function displayStarted(title,desc,assignee,state,estimate,actual){
+         var idValue = getUniqueString();      
+        $("#third_column").append('<div id="'+idValue+'" class="taskborder" draggable="true" ondragstart="drag(event)"><div class="head" style="background-color: #286090; border-radius: 3%;"><span class="task_context">&nbsp;</span><div class="task_tab"><strong class="task_id" style="color: #FFFFFF">ID 13</strong></div><div class="assignee" style="color: #FFFFFF"><span>'+assignee+'</span><span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span></div></div><div class="body"><img alt="" class="avatar" src="https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"width="30"><div class="title">'+title+'</div></div><div class="details"><p hidden ng-model="ngTitle">'+title+'</p><p hidden ng-model="ngDesc">'+desc+'</p><p hidden ng-model="ngAssignee">'+assignee+'</p><p hidden ng-model="ngState">'+state+'</p><p hidden ng-model="ngEstimate">'+estimate+'</p><p hidden ng-model="ngActual">'+actual+'</p></div><ul></ul></div>');
+    }
+
+     function displayFinished(title,desc,assignee,state,estimate,actual){
+         var idValue = getUniqueString();      
+        $("#fourth_column").append('<div id="'+idValue+'" class="taskborder" draggable="true" ondragstart="drag(event)"><div class="head" style="background-color: #286090; border-radius: 3%;"><span class="task_context">&nbsp;</span><div class="task_tab"><strong class="task_id" style="color: #FFFFFF">ID 13</strong></div><div class="assignee" style="color: #FFFFFF"><span>'+assignee+'</span><span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span></div></div><div class="body"><img alt="" class="avatar" src="https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"width="30"><div class="title">'+title+'</div></div><div class="details"><p hidden ng-model="ngTitle">'+title+'</p><p hidden ng-model="ngDesc">'+desc+'</p><p hidden ng-model="ngAssignee">'+assignee+'</p><p hidden ng-model="ngState">'+state+'</p><p hidden ng-model="ngEstimate">'+estimate+'</p><p hidden ng-model="ngActual">'+actual+'</p></div><ul></ul></div>');
+    }
+
+     function displayCancelled(title,desc,assignee,state,estimate,actual){
+         var idValue = getUniqueString();      
+        $("#fifth_column").append('<div id="'+idValue+'" class="taskborder" draggable="true" ondragstart="drag(event)"><div class="head" style="background-color: #286090; border-radius: 3%;"><span class="task_context">&nbsp;</span><div class="task_tab"><strong class="task_id" style="color: #FFFFFF">ID 13</strong></div><div class="assignee" style="color: #FFFFFF"><span>'+assignee+'</span><span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span></div></div><div class="body"><img alt="" class="avatar" src="https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"width="30"><div class="title">'+title+'</div></div><div class="details"><p hidden ng-model="ngTitle">'+title+'</p><p hidden ng-model="ngDesc">'+desc+'</p><p hidden ng-model="ngAssignee">'+assignee+'</p><p hidden ng-model="ngState">'+state+'</p><p hidden ng-model="ngEstimate">'+estimate+'</p><p hidden ng-model="ngActual">'+actual+'</p></div><ul></ul></div>');
+    }
 
  var helloApp = angular.module("taskHomeApp", []);
     helloApp.controller("TaskCtrl", function($scope, $http) {
@@ -775,8 +866,114 @@ function drop(ev) {
                             alert("error : task ");
                  });         
                 };
-    
+
+            $scope.inviteUsers = function(){
+
+            };
+
+            $scope.getAllTasks = function(){
+
+                    
+
+                    $scope.isNew = function(title,desc,assignee,state,estimate,actual) {
+                        if(state=='new'){
+                            displayNew(title,desc,assignee,state,estimate,actual);  
+                            return true;  
+                        }
+                        
+                    }
+                    $scope.isAssigneed= function(title,desc,assignee,state,estimate,actual) {
+                        if(state=='assigned'){
+                            displayAssigned(title,desc,assignee,state,estimate,actual);
+                            return true;
+                        }
+
+                        
+                    }
+                    $scope.isStarted= function(title,desc,assignee,state,estimate,actual) {
+                        if(state=='started'){
+                            displayStarted(title,desc,assignee,state,estimate,actual);
+                            return true;
+                        }
+                        
+                    }
+                    $scope.isFinished= function(title,desc,assignee,state,estimate,actual) {
+                        if(state=='finished'){
+                            displayFinished(title,desc,assignee,state,estimate,actual);
+                            return true;
+                        }
+                        
+                    }
+                    $scope.isCancelled= function(title,desc,assignee,state,estimate,actual) {
+                        if(state=='cancelled'){
+                            displayCancelled(title,desc,assignee,state,estimate,actual);
+                            return true;
+                        }
+                        
+                    }
+                    counter = counter+1;
+            
+                
+
+                    };
+
+
+                 $scope.tasks = [
+                      { 
+                          'taskID':'1',
+                          'title': 'Infy project',
+                          'desc': 'first project',
+                          'assignee': 'None',
+                          'state': 'new',
+                          'estimate': '2 days',
+                          'actual': '2 days'
+                      },
+
+                      {
+                          'taskID':'2',
+                          'title': 'Cognizant Tech',
+                          'desc': 'second project',
+                          'assignee': 'Mahesh',
+                          'state': 'assigned',
+                          'estimate': '5 days',
+                          'actual': '5 days'
+                      },
+                     
+
+                      {
+                          'taskID':'3',
+                          'title': 'Wipro',
+                          'desc': 'third project',
+                          'assignee': 'Arjun',
+                          'state': 'started',
+                          'estimate': '8 days',
+                          'actual': '9 days'
+                      },
+                      {
+                          'taskID':'4',
+                          'title': 'Tcs',
+                          'desc': 'fourth project',
+                          'assignee': 'Dinesh',
+                          'state': 'finished',
+                          'estimate': '3 days',
+                          'actual': '5 days'
+                      },
+                      {
+                          'taskID':'5',
+                          'title': 'HCL Technologies',
+                          'desc': 'fifth project',
+                          'assignee': 'Vaibhav',
+                          'state': 'cancelled',
+                          'estimate': '3 days',
+                          'actual': '5 days'
+                      }
+                  ];
+      
+             
     });
+
+    
+
 
 </script>
 
