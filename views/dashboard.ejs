@@ -874,10 +874,16 @@ function drop(ev) {
             };
 
             $scope.getAllTasks = function(){
+			var projectId = projectIdValue; 
+                     $http({
+                method: 'GET',
+                url: 'http://localhost:8080/api/v1/tasks/'+projectId
+                                              
+               }).success(function(response){
 
-                    
-
-                    $scope.isNew = function(title,desc,assignee,state,estimate,actual) {
+                    $scope.tasks = response;
+                       
+                        $scope.isNew = function(title,desc,assignee,state,estimate,actual) {
                         if(state=='new'){
                             displayNew(title,desc,assignee,state,estimate,actual);  
                             return true;  
@@ -913,63 +919,72 @@ function drop(ev) {
                         }
                         
                     }
-                    counter = counter+1;
+                       
+                         
+                 }).error(function(error){
+                            alert("error : task ");
+                 }); 
+
+                    
+
+          
+                   
             
                 
 
                     };
 
 
-                 $scope.tasks = [
-                      { 
-                          'taskID':'1',
-                          'title': 'Infy project',
-                          'desc': 'first project',
-                          'assignee': 'None',
-                          'state': 'new',
-                          'estimate': '2 days',
-                          'actual': '2 days'
-                      },
+                 // $scope.tasks = [
+                 //      { 
+                 //          'taskID':'1',
+                 //          'title': 'Infy project',
+                 //          'desc': 'first project',
+                 //          'assignee': 'None',
+                 //          'state': 'new',
+                 //          'estimate': '2 days',
+                 //          'actual': '2 days'
+                 //      },
 
-                      {
-                          'taskID':'2',
-                          'title': 'Cognizant Tech',
-                          'desc': 'second project',
-                          'assignee': 'Mahesh',
-                          'state': 'assigned',
-                          'estimate': '5 days',
-                          'actual': '5 days'
-                      },
+                 //      {
+                 //          'taskID':'2',
+                 //          'title': 'Cognizant Tech',
+                 //          'desc': 'second project',
+                 //          'assignee': 'Mahesh',
+                 //          'state': 'assigned',
+                 //          'estimate': '5 days',
+                 //          'actual': '5 days'
+                 //      },
                      
 
-                      {
-                          'taskID':'3',
-                          'title': 'Wipro',
-                          'desc': 'third project',
-                          'assignee': 'Arjun',
-                          'state': 'started',
-                          'estimate': '8 days',
-                          'actual': '9 days'
-                      },
-                      {
-                          'taskID':'4',
-                          'title': 'Tcs',
-                          'desc': 'fourth project',
-                          'assignee': 'Dinesh',
-                          'state': 'finished',
-                          'estimate': '3 days',
-                          'actual': '5 days'
-                      },
-                      {
-                          'taskID':'5',
-                          'title': 'HCL Technologies',
-                          'desc': 'fifth project',
-                          'assignee': 'Vaibhav',
-                          'state': 'cancelled',
-                          'estimate': '3 days',
-                          'actual': '5 days'
-                      }
-                  ];
+                 //      {
+                 //          'taskID':'3',
+                 //          'title': 'Wipro',
+                 //          'desc': 'third project',
+                 //          'assignee': 'Arjun',
+                 //          'state': 'started',
+                 //          'estimate': '8 days',
+                 //          'actual': '9 days'
+                 //      },
+                 //      {
+                 //          'taskID':'4',
+                 //          'title': 'Tcs',
+                 //          'desc': 'fourth project',
+                 //          'assignee': 'Dinesh',
+                 //          'state': 'finished',
+                 //          'estimate': '3 days',
+                 //          'actual': '5 days'
+                 //      },
+                 //      {
+                 //          'taskID':'5',
+                 //          'title': 'HCL Technologies',
+                 //          'desc': 'fifth project',
+                 //          'assignee': 'Vaibhav',
+                 //          'state': 'cancelled',
+                 //          'estimate': '3 days',
+                 //          'actual': '5 days'
+                 //      }
+                 //  ];
       
              
     });
