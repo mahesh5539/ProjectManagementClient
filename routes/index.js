@@ -37,4 +37,14 @@ router.get('/contactPage', function(req, res){
 router.get('/contact', function(req, res) {
 	  res.render('contact');
 	});
+router.get('/getDashboard', function(req, res) {
+	  res.send({"dashboard":"render"});
+	});
+router.get('/dashboard/:id', function(req, res) {
+	var Id = req.param.id;
+	  res.render('dashboard',{"projectID":Id});
+	});
+
+
+
 module.exports = router;

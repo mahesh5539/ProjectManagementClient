@@ -262,6 +262,7 @@ function drop(ev) {
     </script>
   </head>
     <body ng-controller="TaskCtrl" ng-init="getAllTasks()">
+        <input id="projectId" ng-model="ngprojectId" type="hidden" value="<%= projectID %>">
 
 <!-- Navbar Dropdown Cart - START -->
 
@@ -812,7 +813,8 @@ function drop(ev) {
 
 
 
-<script>     
+<script>  
+    var projectIdValue = $("#emailValue").val();   
     var counter = 1;
     function displayNew(title,desc,assignee,state,estimate,actual){
          var idValue = getUniqueString();      

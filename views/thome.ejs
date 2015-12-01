@@ -194,7 +194,7 @@ ul.dropdown-cart li .item-right button{
     </tr>
     <tr ng-repeat="project in projects  | filter: searchKeyword ">
 	     <td>
-            <a href= "">{{project.title}}</a>
+            <a ng-click="getDashboard(project.id)" href= "">{{project.title}}</a>
             <p hidden>{{project.id}}</p>
         </td>
         <td>
@@ -262,39 +262,39 @@ ul.dropdown-cart li .item-right button{
                 alert("You pressed Cancel!");
             }
 
-        }/*
+        }
           $scope.projects = [
               {
-                  'Id':'2',
+                  'id':'2',
                   'title': 'Infy project',
                   'description': 'first project',
                   'state': 'planning'
               },
               {
-                  'Id':'2',
+                  'id':'3',
                   'title': 'Cognizant Technologies',
                   'description': 'second project',
                   'state': 'ongoing'
               },
               {
-                  'Id':'2',
+                  'id':'4',
                   'title': 'Wipro',
                   'description': 'third project',
                   'state': 'closed'
               },
               {
-                  'Id':'2',
+                  'id':'5',
                   'title': 'Tata Consultancy Services (TCS)',
                   'description': 'fourth project',
                   'state': 'ongoing'
               },
               {
-                  'Id':'2',
+                  'id':'6',
                   'title': 'HCL Technologies',
                   'description': 'fifth project',
                   'state': 'planning'
               },
-          ]; */
+          ]; 
         $scope.addRow = function () {
             $scope.projects.push({'Title': $scope.title, 'Description': $scope.description, 'State': $scope.state});
             $scope.title = '';
@@ -361,6 +361,23 @@ ul.dropdown-cart li .item-right button{
             				alert("error");
             	 });         
             	};
+
+              
+
+               $scope.getDashboard= function(id){ 
+              
+              $http({
+                method: 'GET',
+                url: '/getDashboard'                                   
+               }).success(function(response){
+                if (response.dashboard="render") {
+                  window.location='/dashboard/'+id  ;
+                };
+                                        
+               }).error(function(error){
+                    alert("error");
+               });         
+              };
     });
 
 
