@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="contactUsApp">
 <head>
     <meta charset="utf-8" />
     <title>Contact with Map Template | PrepBootstrap</title>
@@ -10,14 +10,115 @@
 
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+    <style>
+        body{
+            background-color:#F6F6F6;
+        }
+        .bigicon {
+            color:white;
+        }
+
+        .mix{
+
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        ul.dropdown-cart{
+            min-width:250px;
+            border: 2px solid #343434;
+            padding: 2px;
+            margin: 7px;
+            margin-top: 11px;
+        }
+        ul.dropdown-cart li .item{
+            display:block;
+            padding:3px 10px;
+            margin: 3px 0;
+
+        }
+        ul.dropdown-cart li .item:hover{
+            background-color:#c3c5c5;
+
+        }
+        ul.dropdown-cart li .item:after{
+            visibility: hidden;
+            display: block;
+            font-size: 0;
+            content: " ";
+            clear: both;
+            height: 0;
+        }
+
+        ul.dropdown-cart li .item-left{
+            float:left;
+        }
+        ul.dropdown-cart li .item-left img,
+        ul.dropdown-cart li .item-left span.item-info{
+            float:left;
+        }
+        ul.dropdown-cart li .item-left span.item-info{
+            margin-left:10px;
+        }
+        ul.dropdown-cart li .item-left span.item-info span{
+            display:block;
+        }
+        ul.dropdown-cart li .item-right{
+            float:right;
+        }
+        ul.dropdown-cart li .item-right button{
+            margin-top:14px;
+        }
+        #searchbox{
+            width: 350px;
+            position: absolute;
+            margin-left: 35%;
+            margin-top: 0.5%;
+
+        }
+        #btnGo{
+            height:34px;
+        }
+    </style>
 </head>
-<body>
+
+
+<body ng-controller="ContactCtrl">
+
+<!-- Navbar Dropdown Cart - START -->
+
+<div class="mix">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+
+            <div class="navbar-header menuitem">
+                <img class="pull-left"src="/img/mainlogo.png" style="width:30px; height:30px; margin-top:5%;">
+                <a class="navbar-brand" href="#">Projectmate</a>
+            </div>
+            <div>
+               <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">About us</a></li>
+                </ul>
+            </div>
+
+          <!--  <div id="searchbox" class="input-group">
+                <input type="text" class="form-control" placeholder="Search for Members">
+      <span class="input-group-btn">
+        <button id="btnGo"class="btn btn-default" type="button">Go!</button>-->
+      </span>
+            </div><!-- /input-group -->
+
+        </div>
+    </nav>
+</div>
+<!--<body>
 
 <div class="container">
 
 <div class="page-header">
     <h1>Contact with Map <small>Bootstrap template, demonstrating a single contact form and a map</small></h1>
-</div>
+</div>-->
 
 <!-- Contact with Map - START -->
 <div class="container">
@@ -29,24 +130,24 @@
                         <legend class="text-center header">Contact us</legend>
                         <div class="form-group">
                             <div class="col-md-10 col-md-offset-1">
-                                <input id="fname" name="name" type="text" placeholder="First Name" class="form-control">
+                                <input id="fname" name="name" type="text" placeholder="First Name" ng-model="user.fname" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-10 col-md-offset-1">
-                                <input id="lname" name="name" type="text" placeholder="Last Name" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-10 col-md-offset-1">
-                                <input id="email" name="email" type="text" placeholder="Email Address" class="form-control">
+                                <input id="lname" name="name" type="text" placeholder="Last Name" ng-model="user.lname" class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-10 col-md-offset-1">
-                                <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control">
+                                <input id="email" name="email" type="text" placeholder="Email Address" ng-model="user.email" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-1">
+                                <input id="phone" name="phone" type="text" placeholder="Phone" ng-model="user.phone" class="form-control">
                             </div>
                         </div>
 
@@ -58,7 +159,7 @@
 
                         <div class="form-group">
                             <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                                <button type="submit" class="btn btn-primary btn-lg" ng-click="contact()">Submit</button>
                             </div>
                         </div>
                     </fieldset>
@@ -72,10 +173,10 @@
                     <div class="panel-body text-center">
                         <h4>Address</h4>
                         <div>
-                        2217 Washington Blvd<br />
-                        Washington DC<br />
-                        #(703) 1234 1234<br />
-                        service@company.com<br />
+                            1 Washington Sq<br />
+                            San Jose, CA<br />
+                            #(703) 1234 1234<br />
+                        projectmate@gmail.com<br />
                         </div>
                         <hr />
                         <div id="map1" class="map">
@@ -130,6 +231,32 @@
 <!-- Contact with Map - END -->
 
 </div>
+
+<script>
+
+    var contactApp = angular.module("contactUsApp", []);
+    contactApp.controller("ContactCtrl", function($scope, $http) {
+
+
+        $scope.contact= function(){
+           alert("inside contact  "+$scope.user.fname);
+            $http({
+                method: 'POST',
+                url: 'http://localhost:8080/api/v1/project/'+fname+'/'+lname+'/'+emailId + '/'+phone+'/'+msg+'/'
+            }).success(function(response){
+
+                alert("We will reach out to you soon !!!");
+
+            }).error(function(error){
+                alert("Error : We cannot reach out to you !!!");
+            });
+        };
+
+
+    }
+
+
+</script>
 
 </body>
 </html>
