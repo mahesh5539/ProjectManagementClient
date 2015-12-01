@@ -871,6 +871,20 @@ function drop(ev) {
 
             $scope.inviteUsers = function(){
 
+                var toEmailId = $scope.inviteEmail;
+                var ProjectId = projectIdValue;
+                alert(toEmailId+" "+ProjectId);
+                $http({
+                    method: 'POST',
+                    url: 'http://localhost:8080/api/v1/user/'+toEmailId+'/'+ProjectId+'/'
+                }).success(function(response){
+
+                    alert("User invited successfully !!!");
+
+                }).error(function(error){
+                    alert("invite user api call error");
+                });
+
             };
 
             $scope.getAllTasks = function(){
