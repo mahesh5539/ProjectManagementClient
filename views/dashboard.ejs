@@ -168,7 +168,7 @@ th .column_content{
 }
 .taskborder {
     width: 90%;
-    height: 12%;
+    height: 90px;
     border: 1px solid black;
     border-radius: 3%;
     margin-left: 4%;
@@ -462,12 +462,12 @@ function drop(ev) {
                   <th class="expand" colspan="1" data-tasksperow="1" id="done_1"
                 rowspan="1" style=
                 "width: 246px; min-width: 246px; max-width: 246px;">
-                    <div ng-repeat="task in tasks">
+                    
                         <div id="first_column" class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div ng-if="isNew(task.title, task.desc, task.assignee, task.state, task.estimate, task.actual)">
-                            </div>
-
-                          <!--   <div id="task1" class="taskborder" draggable="true" ondragstart="drag(event)">
+                            <div ng-repeat="task in tasks1">
+                            
+                                <div ng-if="isNew(task.title, task.desc, task.assignee, task.state, task.estimate, task.actual)">
+                            <div id="task1" class="taskborder" draggable="true" ondragstart="drag(event)">
                                 <div class="head" style="background-color: #286090; border-radius: 3%;">
                                     <span class="task_context">&nbsp;</span>
                                     <div class="task_tab">
@@ -494,18 +494,20 @@ function drop(ev) {
                                     <p hidden ng-model="ngEstimate">{{task.estimate}}</p>
                                     <p hidden ng-model="ngActual">{{task.actual}}</p>
                                 <ul></ul>
-                            </div>  -->   
+                            </div> 
+                              </div>
                         </div> 
                     </div>
                 </th>
                 <th class="expand" colspan="1" data-tasksperow="1" id="done_9"
                 rowspan="1" style=
                 "width: 246px; min-width: 246px; max-width: 246px;">
-                      <div ng-repeat="task in tasks">
+                      
                         <div id="second_column" class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div ng-if="isAssigneed(task.title, task.desc, task.assignee, task.state, task.estimate, task.actual)">
-                            </div>
-                          <!--   <div id="task2" class="taskborder" draggable="true" ondragstart="drag(event)">
+                            
+                            <div ng-repeat="task in tasks2">
+                                <div ng-if="isAssigneed(task.title, task.desc, task.assignee, task.state, task.estimate, task.actual)">
+                            <div id="task2" class="taskborder" draggable="true" ondragstart="drag(event)">
                                 <div class="head" style="background-color: #286090; border-radius: 3%;">
                                     <span class="task_context">&nbsp;</span>
                                     <div class="task_tab">
@@ -532,7 +534,8 @@ function drop(ev) {
                                     <p hidden ng-model="ngEstimate">{{task.estimate}}</p>
                                     <p hidden ng-model="ngActual">{{task.actual}}</p>
                                 <ul></ul>
-                            </div> -->    
+                            </div> 
+                        </div>
                         </div> 
                     </div>
                  
@@ -540,11 +543,12 @@ function drop(ev) {
                 <th class="expand" colspan="1" data-tasksperow="1" id="done_9"
                 rowspan="1" style=
                 "width: 246px; min-width: 246px; max-width: 246px;">
-                    <div ng-repeat="task in tasks">
+                    
                         <div id="third_column" class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div ng-if="isStarted(task.title, task.desc, task.assignee, task.state, task.estimate, task.actual)">
-                            </div>
-                           <!--  <div id="task3" class="taskborder" draggable="true" ondragstart="drag(event)">
+                            <div ng-repeat="task in tasks3">
+                                <div ng-if="isStarted(task.title, task.desc, task.assignee, task.state, task.estimate, task.actual)">
+                            
+                            <div id="task3" class="taskborder" draggable="true" ondragstart="drag(event)">
                                 <div class="head" style="background-color: #286090; border-radius: 3%;">
                                     <span class="task_context">&nbsp;</span>
                                     <div class="task_tab">
@@ -571,7 +575,8 @@ function drop(ev) {
                                     <p hidden ng-model="ngEstimate">{{task.estimate}}</p>
                                     <p hidden ng-model="ngActual">{{task.actual}}</p>
                                 <ul></ul>
-                            </div>  -->   
+                            </div>  
+                              </div>
                         </div> 
                     </div>
                    
@@ -579,11 +584,12 @@ function drop(ev) {
                 <th class="expand" colspan="1" data-tasksperow="1" id="done_9"
                 rowspan="1" style=
                 "width: 246px; min-width: 246px; max-width: 246px;">
-                   <div ng-repeat="task in tasks">
+                   
                         <div id="fourth_column" class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div ng-if="isFinished(task.title, task.desc, task.assignee, task.state, task.estimate, task.actual)">
-                            </div>
-                          <!--   <div id="task4" class="taskborder" draggable="true" ondragstart="drag(event)">
+                            <div ng-repeat="task in tasks4">
+                                <div ng-if="isFinished(task.title, task.desc, task.assignee, task.state, task.estimate, task.actual)">
+                            
+                            <div id="task4" class="taskborder" draggable="true" ondragstart="drag(event)">
                                 <div class="head" style="background-color: #286090; border-radius: 3%;">
                                     <span class="task_context">&nbsp;</span>
                                     <div class="task_tab">
@@ -610,7 +616,8 @@ function drop(ev) {
                                     <p hidden ng-model="ngEstimate">{{task.estimate}}</p>
                                     <p hidden ng-model="ngActual">{{task.actual}}</p>
                                 <ul></ul>
-                            </div>  -->   
+                            </div> 
+                          </div>
                         </div> 
                     </div>
                   
@@ -618,11 +625,12 @@ function drop(ev) {
                 <th class="expand" colspan="1" data-tasksperow="1" id="done_9"
                 rowspan="1" style=
                 "width: 246px; min-width: 246px; max-width: 246px;">
-                   <div ng-repeat="task in tasks">
+                   
                         <div id="fifth_column" class="column_content" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div ng-if="isCancelled(task.title, task.desc, task.assignee, task.state, task.estimate, task.actual)">
-                            </div>
-<!-- 
+                   <div ng-repeat="task in tasks5">
+                   <div ng-if="isCancelled(task.title, task.desc, task.assignee, task.state, task.estimate, task.actual)">
+                            
+
                             <div id="task5" class="taskborder" draggable="true" ondragstart="drag(event)">
                                 <div class="head" style="background-color: #286090; border-radius: 3%;">
                                     <span class="task_context">&nbsp;</span>
@@ -650,7 +658,9 @@ function drop(ev) {
                                     <p hidden ng-model="ngEstimate">{{task.estimate}}</p>
                                     <p hidden ng-model="ngActual">{{task.actual}}</p>
                                 <ul></ul>
-                            </div>  -->   
+                            </div> 
+                            </div>       
+                    
                         </div> 
                     </div>
                    
@@ -816,39 +826,40 @@ function drop(ev) {
 
 
 <script>  
-     function getStringUnique() {
-    var S4 = function() {
-       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
-    };
-    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
-    }
+var projectIdValue = $("#projectId").val(); 
+    //  function getStringUnique() {
+    // var S4 = function() {
+    //    return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    // };
+    // return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+    // }
 
-    var projectIdValue = $("#projectId").val();   
-    var counter = 1;
-    function displayNew(title,desc,assignee,state,estimate,actual){
-         var idValue = getStringUnique();      
-        $("#first_column").append('<div id="'+idValue+'" class="taskborder" draggable="true" ondragstart="drag(event)"><div class="head" style="background-color: #286090; border-radius: 3%;"><span class="task_context">&nbsp;</span><div class="task_tab"><strong class="task_id" style="color: #FFFFFF">ID 13</strong></div><div class="assignee" style="color: #FFFFFF"><span>'+assignee+'</span><span style="color:white-spacete; margin-left:15px;" class="glyphicon glyphicon-cog"></span></div></div><div class="body"><img alt="" class="avatar" src="https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"width="30"><div class="title">'+title+'</div></div><div class="details"><p hidden ng-model="ngTitle">'+title+'</p><p hidden ng-model="ngDesc">'+desc+'</p><p hidden ng-model="ngAssignee">'+assignee+'</p><p hidden ng-model="ngState">'+state+'</p><p hidden ng-model="ngEstimate">'+estimate+'</p><p hidden ng-model="ngActual">'+actual+'</p></div><ul></ul></div>');
-    }
+      
+    // var counter = 1;
+    // function displayNew(title,desc,assignee,state,estimate,actual){
+    //      var idValue = getStringUnique();      
+    //     $("#first_column").append('<div id="'+idValue+'" class="taskborder" draggable="true" ondragstart="drag(event)"><div class="head" style="background-color: #286090; border-radius: 3%;"><span class="task_context">&nbsp;</span><div class="task_tab"><strong class="task_id" style="color: #FFFFFF">ID 13</strong></div><div class="assignee" style="color: #FFFFFF"><span>'+assignee+'</span><span style="color:white-spacete; margin-left:15px;" class="glyphicon glyphicon-cog"></span></div></div><div class="body"><img alt="" class="avatar" src="https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"width="30"><div class="title">'+title+'</div></div><div class="details"><p hidden ng-model="ngTitle">'+title+'</p><p hidden ng-model="ngDesc">'+desc+'</p><p hidden ng-model="ngAssignee">'+assignee+'</p><p hidden ng-model="ngState">'+state+'</p><p hidden ng-model="ngEstimate">'+estimate+'</p><p hidden ng-model="ngActual">'+actual+'</p></div><ul></ul></div>');
+    // }
 
-     function displayAssigned(title,desc,assignee,state,estimate,actual){
-         var idValue = getStringUnique();      
-        $("#second_column").append('<div id="'+idValue+'" class="taskborder" draggable="true" ondragstart="drag(event)"><div class="head" style="background-color: #286090; border-radius: 3%;"><span class="task_context">&nbsp;</span><div class="task_tab"><strong class="task_id" style="color: #FFFFFF">ID 13</strong></div><div class="assignee" style="color: #FFFFFF"><span>'+assignee+'</span><span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span></div></div><div class="body"><img alt="" class="avatar" src="https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"width="30"><div class="title">'+title+'</div></div><div class="details"><p hidden ng-model="ngTitle">'+title+'</p><p hidden ng-model="ngDesc">'+desc+'</p><p hidden ng-model="ngAssignee">'+assignee+'</p><p hidden ng-model="ngState">'+state+'</p><p hidden ng-model="ngEstimate">'+estimate+'</p><p hidden ng-model="ngActual">'+actual+'</p></div><ul></ul></div>');
-    }
+    //  function displayAssigned(title,desc,assignee,state,estimate,actual){
+    //      var idValue = getStringUnique();      
+    //     $("#second_column").append('<div id="'+idValue+'" class="taskborder" draggable="true" ondragstart="drag(event)"><div class="head" style="background-color: #286090; border-radius: 3%;"><span class="task_context">&nbsp;</span><div class="task_tab"><strong class="task_id" style="color: #FFFFFF">ID 13</strong></div><div class="assignee" style="color: #FFFFFF"><span>'+assignee+'</span><span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span></div></div><div class="body"><img alt="" class="avatar" src="https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"width="30"><div class="title">'+title+'</div></div><div class="details"><p hidden ng-model="ngTitle">'+title+'</p><p hidden ng-model="ngDesc">'+desc+'</p><p hidden ng-model="ngAssignee">'+assignee+'</p><p hidden ng-model="ngState">'+state+'</p><p hidden ng-model="ngEstimate">'+estimate+'</p><p hidden ng-model="ngActual">'+actual+'</p></div><ul></ul></div>');
+    // }
 
-     function displayStarted(title,desc,assignee,state,estimate,actual){
-         var idValue = getStringUnique();      
-        $("#third_column").append('<div id="'+idValue+'" class="taskborder" draggable="true" ondragstart="drag(event)"><div class="head" style="background-color: #286090; border-radius: 3%;"><span class="task_context">&nbsp;</span><div class="task_tab"><strong class="task_id" style="color: #FFFFFF">ID 13</strong></div><div class="assignee" style="color: #FFFFFF"><span>'+assignee+'</span><span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span></div></div><div class="body"><img alt="" class="avatar" src="https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"width="30"><div class="title">'+title+'</div></div><div class="details"><p hidden ng-model="ngTitle">'+title+'</p><p hidden ng-model="ngDesc">'+desc+'</p><p hidden ng-model="ngAssignee">'+assignee+'</p><p hidden ng-model="ngState">'+state+'</p><p hidden ng-model="ngEstimate">'+estimate+'</p><p hidden ng-model="ngActual">'+actual+'</p></div><ul></ul></div>');
-    }
+    //  function displayStarted(title,desc,assignee,state,estimate,actual){
+    //      var idValue = getStringUnique();      
+    //     $("#third_column").append('<div id="'+idValue+'" class="taskborder" draggable="true" ondragstart="drag(event)"><div class="head" style="background-color: #286090; border-radius: 3%;"><span class="task_context">&nbsp;</span><div class="task_tab"><strong class="task_id" style="color: #FFFFFF">ID 13</strong></div><div class="assignee" style="color: #FFFFFF"><span>'+assignee+'</span><span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span></div></div><div class="body"><img alt="" class="avatar" src="https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"width="30"><div class="title">'+title+'</div></div><div class="details"><p hidden ng-model="ngTitle">'+title+'</p><p hidden ng-model="ngDesc">'+desc+'</p><p hidden ng-model="ngAssignee">'+assignee+'</p><p hidden ng-model="ngState">'+state+'</p><p hidden ng-model="ngEstimate">'+estimate+'</p><p hidden ng-model="ngActual">'+actual+'</p></div><ul></ul></div>');
+    // }
 
-     function displayFinished(title,desc,assignee,state,estimate,actual){
-         var idValue = getStringUnique();      
-        $("#fourth_column").append('<div id="'+idValue+'" class="taskborder" draggable="true" ondragstart="drag(event)"><div class="head" style="background-color: #286090; border-radius: 3%;"><span class="task_context">&nbsp;</span><div class="task_tab"><strong class="task_id" style="color: #FFFFFF">ID 13</strong></div><div class="assignee" style="color: #FFFFFF"><span>'+assignee+'</span><span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span></div></div><div class="body"><img alt="" class="avatar" src="https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"width="30"><div class="title">'+title+'</div></div><div class="details"><p hidden ng-model="ngTitle">'+title+'</p><p hidden ng-model="ngDesc">'+desc+'</p><p hidden ng-model="ngAssignee">'+assignee+'</p><p hidden ng-model="ngState">'+state+'</p><p hidden ng-model="ngEstimate">'+estimate+'</p><p hidden ng-model="ngActual">'+actual+'</p></div><ul></ul></div>');
-    }
+    //  function displayFinished(title,desc,assignee,state,estimate,actual){
+    //      var idValue = getStringUnique();      
+    //     $("#fourth_column").append('<div id="'+idValue+'" class="taskborder" draggable="true" ondragstart="drag(event)"><div class="head" style="background-color: #286090; border-radius: 3%;"><span class="task_context">&nbsp;</span><div class="task_tab"><strong class="task_id" style="color: #FFFFFF">ID 13</strong></div><div class="assignee" style="color: #FFFFFF"><span>'+assignee+'</span><span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span></div></div><div class="body"><img alt="" class="avatar" src="https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"width="30"><div class="title">'+title+'</div></div><div class="details"><p hidden ng-model="ngTitle">'+title+'</p><p hidden ng-model="ngDesc">'+desc+'</p><p hidden ng-model="ngAssignee">'+assignee+'</p><p hidden ng-model="ngState">'+state+'</p><p hidden ng-model="ngEstimate">'+estimate+'</p><p hidden ng-model="ngActual">'+actual+'</p></div><ul></ul></div>');
+    // }
 
-     function displayCancelled(title,desc,assignee,state,estimate,actual){
-         var idValue = getStringUnique();      
-        $("#fifth_column").append('<div id="'+idValue+'" class="taskborder" draggable="true" ondragstart="drag(event)"><div class="head" style="background-color: #286090; border-radius: 3%;"><span class="task_context">&nbsp;</span><div class="task_tab"><strong class="task_id" style="color: #FFFFFF">ID 13</strong></div><div class="assignee" style="color: #FFFFFF"><span>'+assignee+'</span><span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span></div></div><div class="body"><img alt="" class="avatar" src="https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"width="30"><div class="title">'+title+'</div></div><div class="details"><p hidden ng-model="ngTitle">'+title+'</p><p hidden ng-model="ngDesc">'+desc+'</p><p hidden ng-model="ngAssignee">'+assignee+'</p><p hidden ng-model="ngState">'+state+'</p><p hidden ng-model="ngEstimate">'+estimate+'</p><p hidden ng-model="ngActual">'+actual+'</p></div><ul></ul></div>');
-    }
+    //  function displayCancelled(title,desc,assignee,state,estimate,actual){
+    //      var idValue = getStringUnique();      
+    //     $("#fifth_column").append('<div id="'+idValue+'" class="taskborder" draggable="true" ondragstart="drag(event)"><div class="head" style="background-color: #286090; border-radius: 3%;"><span class="task_context">&nbsp;</span><div class="task_tab"><strong class="task_id" style="color: #FFFFFF">ID 13</strong></div><div class="assignee" style="color: #FFFFFF"><span>'+assignee+'</span><span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span></div></div><div class="body"><img alt="" class="avatar" src="https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"width="30"><div class="title">'+title+'</div></div><div class="details"><p hidden ng-model="ngTitle">'+title+'</p><p hidden ng-model="ngDesc">'+desc+'</p><p hidden ng-model="ngAssignee">'+assignee+'</p><p hidden ng-model="ngState">'+state+'</p><p hidden ng-model="ngEstimate">'+estimate+'</p><p hidden ng-model="ngActual">'+actual+'</p></div><ul></ul></div>');
+    // }
 
  var helloApp = angular.module("taskHomeApp", []);
     helloApp.controller("TaskCtrl", function($scope, $http) {
@@ -933,61 +944,102 @@ function drop(ev) {
                  //        }
                         
                  //    }
-			var projectId = projectIdValue; 
-                     $http({
-                method: 'GET',
-                url: 'http://localhost:8080/api/v1/tasks/'+projectId
-                                              
-               }).success(function(response){
 
-                    $scope.tasks = response;
-                       
-                        $scope.isNew = function(title,desc,assignee,state,estimate,actual) {
-                        if(state=='new'){
-                            displayNew(title,desc,assignee,state,estimate,actual);  
-                            return true;  
-                        }
+                  $scope.isNew = function(title,desc,assignee,state,estimate,actual) {
+                        // if(state=='new'){
+                        //     displayNew(title,desc,assignee,state,estimate,actual);  
+                        //     return true;  
+                        // }
+                        return state=="new";
                         
                     }
                     $scope.isAssigneed= function(title,desc,assignee,state,estimate,actual) {
-                        if(state=='assigned'){
-                            displayAssigned(title,desc,assignee,state,estimate,actual);
-                            return true;
-                        }
-
+                        // if(state=='assigned'){
+                        //     displayAssigned(title,desc,assignee,state,estimate,actual);
+                        //     return true;
+                        // }
+                        return state=="assigned";
                         
                     }
                     $scope.isStarted= function(title,desc,assignee,state,estimate,actual) {
-                        if(state=='started'){
-                            displayStarted(title,desc,assignee,state,estimate,actual);
-                            return true;
-                        }
+                        // if(state=='started'){
+                        //     displayStarted(title,desc,assignee,state,estimate,actual);
+                        //     return true;
+                        // }
+                        return state=="started";
                         
                     }
                     $scope.isFinished= function(title,desc,assignee,state,estimate,actual) {
-                        if(state=='finished'){
-                            displayFinished(title,desc,assignee,state,estimate,actual);
-                            return true;
-                        }
-                        
+                        // if(state=='finished'){
+                        //     displayFinished(title,desc,assignee,state,estimate,actual);
+                        //     return true;
+                        // }
+                        return state=="finished";
                     }
                     $scope.isCancelled= function(title,desc,assignee,state,estimate,actual) {
-                        if(state=='cancelled'){
-                            displayCancelled(title,desc,assignee,state,estimate,actual);
-                            return true;
-                        }
-                        
+                        // if(state=='cancelled'){
+                        //     displayCancelled(title,desc,assignee,state,estimate,actual);
+                        //     return true;
+                        // }
+                        return state=="cancelled";
                     }
+			// var projectId = projectIdValue; 
+   //                   $http({
+   //              method: 'GET',
+   //              url: 'http://localhost:8080/api/v1/tasks/'+projectId
+                                              
+   //             }).success(function(response){
+
+   //                  $scope.tasks = response;
+                       
+   //                      $scope.isNew = function(title,desc,assignee,state,estimate,actual) {
+   //                      // if(state=='new'){
+   //                      //     displayNew(title,desc,assignee,state,estimate,actual);  
+   //                      //     return true;  
+   //                      // }
+   //                      return state=="new";
+                        
+   //                  }
+   //                  $scope.isAssigneed= function(title,desc,assignee,state,estimate,actual) {
+   //                      // if(state=='assigned'){
+   //                      //     displayAssigned(title,desc,assignee,state,estimate,actual);
+   //                      //     return true;
+   //                      // }
+   //                      return state=="assigned";
+                        
+   //                  }
+   //                  $scope.isStarted= function(title,desc,assignee,state,estimate,actual) {
+   //                      // if(state=='started'){
+   //                      //     displayStarted(title,desc,assignee,state,estimate,actual);
+   //                      //     return true;
+   //                      // }
+   //                      return state=="started";
+                        
+   //                  }
+   //                  $scope.isFinished= function(title,desc,assignee,state,estimate,actual) {
+   //                      // if(state=='finished'){
+   //                      //     displayFinished(title,desc,assignee,state,estimate,actual);
+   //                      //     return true;
+   //                      // }
+   //                      return state=="finished";
+   //                  }
+   //                  $scope.isCancelled= function(title,desc,assignee,state,estimate,actual) {
+   //                      // if(state=='cancelled'){
+   //                      //     displayCancelled(title,desc,assignee,state,estimate,actual);
+   //                      //     return true;
+   //                      // }
+   //                      return state=="cancelled";
+   //                  }
                        
                          
-                 }).error(function(error){
-                            alert("error : task ");
-                 });        
+   //               }).error(function(error){
+   //                          alert("error : task ");
+   //               });        
 
                     };
 
 
-                 $scope.tasks = [
+                 $scope.tasks1 = [
                       { 
                           'taskID':'1',
                           'title': 'Infy project',
@@ -1003,6 +1055,251 @@ function drop(ev) {
                           'title': 'Cognizant Tech',
                           'desc': 'second project',
                           'assignee': 'Mahesh',
+                          'state': 'assigned',
+                          'estimate': '5 days',
+                          'actual': '5 days'
+                      },
+                       {
+                          'taskID':'2',
+                          'title': 'sjsu proj',
+                          'desc': 'second project',
+                          'assignee': 'Arjun',
+                          'state': 'assigned',
+                          'estimate': '5 days',
+                          'actual': '5 days'
+                      },
+                     
+
+                      {
+                          'taskID':'3',
+                          'title': 'Wipro',
+                          'desc': 'third project',
+                          'assignee': 'Arjun',
+                          'state': 'started',
+                          'estimate': '8 days',
+                          'actual': '9 days'
+                      },
+                      {
+                          'taskID':'4',
+                          'title': 'Tcs',
+                          'desc': 'fourth project',
+                          'assignee': 'Dinesh',
+                          'state': 'finished',
+                          'estimate': '3 days',
+                          'actual': '5 days'
+                      },
+                      {
+                          'taskID':'5',
+                          'title': 'HCL Technologies',
+                          'desc': 'fifth project',
+                          'assignee': 'Vaibhav',
+                          'state': 'cancelled',
+                          'estimate': '3 days',
+                          'actual': '5 days'
+                      }
+                  ];
+                  $scope.tasks2 = [
+                      { 
+                          'taskID':'1',
+                          'title': 'Infy project',
+                          'desc': 'first project',
+                          'assignee': 'None',
+                          'state': 'new',
+                          'estimate': '2 days',
+                          'actual': '2 days'
+                      },
+
+                      {
+                          'taskID':'2',
+                          'title': 'Cognizant Tech',
+                          'desc': 'second project',
+                          'assignee': 'Mahesh',
+                          'state': 'assigned',
+                          'estimate': '5 days',
+                          'actual': '5 days'
+                      },
+                       {
+                          'taskID':'2',
+                          'title': 'sjsu proj',
+                          'desc': 'second project',
+                          'assignee': 'Arjun',
+                          'state': 'assigned',
+                          'estimate': '5 days',
+                          'actual': '5 days'
+                      },
+                     
+
+                      {
+                          'taskID':'3',
+                          'title': 'Wipro',
+                          'desc': 'third project',
+                          'assignee': 'Arjun',
+                          'state': 'started',
+                          'estimate': '8 days',
+                          'actual': '9 days'
+                      },
+                      {
+                          'taskID':'4',
+                          'title': 'Tcs',
+                          'desc': 'fourth project',
+                          'assignee': 'Dinesh',
+                          'state': 'finished',
+                          'estimate': '3 days',
+                          'actual': '5 days'
+                      },
+                      {
+                          'taskID':'5',
+                          'title': 'HCL Technologies',
+                          'desc': 'fifth project',
+                          'assignee': 'Vaibhav',
+                          'state': 'cancelled',
+                          'estimate': '3 days',
+                          'actual': '5 days'
+                      }
+                  ];
+                  $scope.tasks3 = [
+                      { 
+                          'taskID':'1',
+                          'title': 'Infy project',
+                          'desc': 'first project',
+                          'assignee': 'None',
+                          'state': 'new',
+                          'estimate': '2 days',
+                          'actual': '2 days'
+                      },
+
+                      {
+                          'taskID':'2',
+                          'title': 'Cognizant Tech',
+                          'desc': 'second project',
+                          'assignee': 'Mahesh',
+                          'state': 'assigned',
+                          'estimate': '5 days',
+                          'actual': '5 days'
+                      },
+                       {
+                          'taskID':'2',
+                          'title': 'sjsu proj',
+                          'desc': 'second project',
+                          'assignee': 'Arjun',
+                          'state': 'assigned',
+                          'estimate': '5 days',
+                          'actual': '5 days'
+                      },
+                     
+
+                      {
+                          'taskID':'3',
+                          'title': 'Wipro',
+                          'desc': 'third project',
+                          'assignee': 'Arjun',
+                          'state': 'started',
+                          'estimate': '8 days',
+                          'actual': '9 days'
+                      },
+                      {
+                          'taskID':'4',
+                          'title': 'Tcs',
+                          'desc': 'fourth project',
+                          'assignee': 'Dinesh',
+                          'state': 'finished',
+                          'estimate': '3 days',
+                          'actual': '5 days'
+                      },
+                      {
+                          'taskID':'5',
+                          'title': 'HCL Technologies',
+                          'desc': 'fifth project',
+                          'assignee': 'Vaibhav',
+                          'state': 'cancelled',
+                          'estimate': '3 days',
+                          'actual': '5 days'
+                      }
+                  ];
+                  $scope.tasks4 = [
+                      { 
+                          'taskID':'1',
+                          'title': 'Infy project',
+                          'desc': 'first project',
+                          'assignee': 'None',
+                          'state': 'new',
+                          'estimate': '2 days',
+                          'actual': '2 days'
+                      },
+
+                      {
+                          'taskID':'2',
+                          'title': 'Cognizant Tech',
+                          'desc': 'second project',
+                          'assignee': 'Mahesh',
+                          'state': 'assigned',
+                          'estimate': '5 days',
+                          'actual': '5 days'
+                      },
+                       {
+                          'taskID':'2',
+                          'title': 'sjsu proj',
+                          'desc': 'second project',
+                          'assignee': 'Arjun',
+                          'state': 'assigned',
+                          'estimate': '5 days',
+                          'actual': '5 days'
+                      },
+                     
+
+                      {
+                          'taskID':'3',
+                          'title': 'Wipro',
+                          'desc': 'third project',
+                          'assignee': 'Arjun',
+                          'state': 'started',
+                          'estimate': '8 days',
+                          'actual': '9 days'
+                      },
+                      {
+                          'taskID':'4',
+                          'title': 'Tcs',
+                          'desc': 'fourth project',
+                          'assignee': 'Dinesh',
+                          'state': 'finished',
+                          'estimate': '3 days',
+                          'actual': '5 days'
+                      },
+                      {
+                          'taskID':'5',
+                          'title': 'HCL Technologies',
+                          'desc': 'fifth project',
+                          'assignee': 'Vaibhav',
+                          'state': 'cancelled',
+                          'estimate': '3 days',
+                          'actual': '5 days'
+                      }
+                  ];
+                  $scope.tasks5 = [
+                      { 
+                          'taskID':'1',
+                          'title': 'Infy project',
+                          'desc': 'first project',
+                          'assignee': 'None',
+                          'state': 'new',
+                          'estimate': '2 days',
+                          'actual': '2 days'
+                      },
+
+                      {
+                          'taskID':'2',
+                          'title': 'Cognizant Tech',
+                          'desc': 'second project',
+                          'assignee': 'Mahesh',
+                          'state': 'assigned',
+                          'estimate': '5 days',
+                          'actual': '5 days'
+                      },
+                       {
+                          'taskID':'2',
+                          'title': 'sjsu proj',
+                          'desc': 'second project',
+                          'assignee': 'Arjun',
                           'state': 'assigned',
                           'estimate': '5 days',
                           'actual': '5 days'
