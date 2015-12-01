@@ -262,7 +262,7 @@ function drop(ev) {
     </script>
   </head>
     <body ng-controller="TaskCtrl" ng-init="getAllTasks()">
-        <input id="projectId" ng-model="ngprojectId" type="hidden" value="<%= projectID %>">
+        <input id="projectId" ng-model="ngprojectId" type="hidden" value="<%=projectID%>">
 
 <!-- Navbar Dropdown Cart - START -->
 
@@ -814,11 +814,11 @@ function drop(ev) {
 
 
 <script>  
-    var projectIdValue = $("#emailValue").val();   
+    var projectIdValue = $("#projectId").val();   
     var counter = 1;
     function displayNew(title,desc,assignee,state,estimate,actual){
          var idValue = getUniqueString();      
-        $("#first_column").append('<div id="'+idValue+'" class="taskborder" draggable="true" ondragstart="drag(event)"><div class="head" style="background-color: #286090; border-radius: 3%;"><span class="task_context">&nbsp;</span><div class="task_tab"><strong class="task_id" style="color: #FFFFFF">ID 13</strong></div><div class="assignee" style="color: #FFFFFF"><span>'+assignee+'</span><span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span></div></div><div class="body"><img alt="" class="avatar" src="https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"width="30"><div class="title">'+title+'</div></div><div class="details"><p hidden ng-model="ngTitle">'+title+'</p><p hidden ng-model="ngDesc">'+desc+'</p><p hidden ng-model="ngAssignee">'+assignee+'</p><p hidden ng-model="ngState">'+state+'</p><p hidden ng-model="ngEstimate">'+estimate+'</p><p hidden ng-model="ngActual">'+actual+'</p></div><ul></ul></div>');
+        $("#first_column").append('<div id="'+idValue+'" class="taskborder" draggable="true" ondragstart="drag(event)"><div class="head" style="background-color: #286090; border-radius: 3%;"><span class="task_context">&nbsp;</span><div class="task_tab"><strong class="task_id" style="color: #FFFFFF">ID 13</strong></div><div class="assignee" style="color: #FFFFFF"><span>'+assignee+'</span><span style="color:white-spacete; margin-left:15px;" class="glyphicon glyphicon-cog"></span></div></div><div class="body"><img alt="" class="avatar" src="https://mahesh419.kanbanize.com//uploaded_files/avatars/default_avatar_small.jpg"width="30"><div class="title">'+title+'</div></div><div class="details"><p hidden ng-model="ngTitle">'+title+'</p><p hidden ng-model="ngDesc">'+desc+'</p><p hidden ng-model="ngAssignee">'+assignee+'</p><p hidden ng-model="ngState">'+state+'</p><p hidden ng-model="ngEstimate">'+estimate+'</p><p hidden ng-model="ngActual">'+actual+'</p></div><ul></ul></div>');
     }
 
      function displayAssigned(title,desc,assignee,state,estimate,actual){

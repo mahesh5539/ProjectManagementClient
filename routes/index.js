@@ -41,7 +41,9 @@ router.get('/getDashboard', function(req, res) {
 	  res.send({"dashboard":"render"});
 	});
 router.get('/dashboard/:id', function(req, res) {
-	var Id = req.param.id;
+	
+	var Id = req.params.id;
+	console.log("----user----"+Id);
 	  res.render('dashboard',{"projectID":Id});
 	});
 
