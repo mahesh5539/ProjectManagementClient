@@ -214,20 +214,54 @@ ul.dropdown-cart li .item-right button{
             <button type="button" ng-click="deleteProject(project.id)" class="btn btn-primary">Delete</button>
         </td>
         <td>
-            <div class="progress">
-                <div class="progress-bar progress-bar-success" style="width: 35%">
-                    <span class="sr-only">35% Complete (success)</span>
-                     35
-                </div>
-                <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 20%">
-                    <span class="sr-only">20% Complete (warning)</span>
-                    20
-                </div>
-                <div class="progress-bar progress-bar-danger" style="width: 10%">
-                    <span class="sr-only">10% Complete (danger)</span>
-                    10
+
+            <!-- Trigger the modal with a button -->
+            <p class="pull-right" data-toggle="modal" data-target="#myModall"><a ng-click="getProjectStatus(project.id)" href=""> <span class="glyphicon glyphicon-plus"></span> see progress</a></p>
+            <!-- Modal -->
+            <div class="modal fade newproject" id="myModall" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div  class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Project Status</h4>
+                        </div>
+                        <div class="modal-body">
+
+
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-success" style="width:{{status.new}}%">
+                                    <span class="sr-only">{{status.new}}% Complete (success)</span>
+                                    {{status.new}}
+                                </div>
+                                <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: {{status.assigned}}%">
+                                    <span class="sr-only">{{status.assigned}}% Complete (warning)</span>
+                                    {{status.assigned}}
+                                </div>
+                                <div class="progress-bar progress-bar-danger" style="width: {{status.started}}%">
+                                    <span class="sr-only">{{status.started}}% Complete (danger)</span>
+                                    {{status.started}}
+                                </div>
+                                <div class="progress-bar progress-bar-success" style="width: {{status.finished}}%">
+                                    <span class="sr-only">{{status.finished}}% Complete (success)</span>
+                                    {{status.finished}}
+                                </div>
+                                <div class="progress-bar progress-bar-danger" style="width: {{status.cancelled}}%">
+                                    <span class="sr-only">{{status.cancelled}}% Complete (danger)</span>
+                                    {{status.cancelled}}
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
+
+            </div>
+
         </td>
     </tr>
 </table>
@@ -317,6 +351,34 @@ ul.dropdown-cart li .item-right button{
             $scope.projects.splice(index, 1);
         };
 
+        $scope.getProjectStatus = function(projectId){
+
+            alert("get project status for project : "+ projectId);
+
+            $scope.status = {
+
+                'new':'20',
+                'assigned':'20',
+                'started':'20',
+                'finished':'20',
+                'cancelled':'20'
+
+            };
+
+           /* $http({
+                method: 'GET',
+                url: 'http://localhost:8080/api/v1/project/' + projectId + '/'
+            }).success(function(response){
+
+                $scope.status = response;
+                alert("success : get Project status API success");
+
+            }).error(function(error){
+
+                alert("error: get Project status API failure");
+            });*/
+        };
+
  	        $scope.loadProjects= function(){
             $http({
                 method: 'GET',
@@ -379,6 +441,7 @@ ul.dropdown-cart li .item-right button{
                });         
               };
     });
+
 
 
     /*drop down controller below for state of project*/
