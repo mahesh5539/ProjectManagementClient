@@ -939,11 +939,19 @@ var projectStateValue = $("#projectState").val();
                        /*  $scope.projectTitle='';
                          $scope.projectDesc='';
                          $scope.projects = response;*/
+
+                   $scope.taskTitle="";
+                   $scope.taskDesc="";
+                   $scope.taskAsignee="";
+                   $scope.taskEstimate="";
+                   $scope.taskActual="";
+                   $scope.taskState="";
                          
                          alert("Task created successfully !!!");
                          
                  }).error(function(error){
                             alert("error : task ");
+
                  });         
                 };
 
