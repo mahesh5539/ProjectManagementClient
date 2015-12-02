@@ -231,25 +231,25 @@ ul.dropdown-cart li .item-right button{
 
 
                             <div class="progress">
-                                <div class="progress-bar progress-bar-success" style="width:{{status.new}}%">
-                                    <span class="sr-only">{{status.new}}% Complete (success)</span>
-                                    {{status.new}}
+                                <div class="progress-bar progress-bar-success" style="width:{{status.countOfNewState}}%">
+                                    <span class="sr-only">{{status.countOfNewState}}% Complete (success)</span>
+                                    {{status.countOfNewState}}
                                 </div>
-                                <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: {{status.assigned}}%">
-                                    <span class="sr-only">{{status.assigned}}% Complete (warning)</span>
-                                    {{status.assigned}}
+                                <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: {{status.countOfAssignedState}}%">
+                                    <span class="sr-only">{{status.countOfAssignedState}}% Complete (warning)</span>
+                                    {{status.countOfAssignedState}}
                                 </div>
-                                <div class="progress-bar progress-bar-danger" style="width: {{status.started}}%">
-                                    <span class="sr-only">{{status.started}}% Complete (danger)</span>
-                                    {{status.started}}
+                                <div class="progress-bar progress-bar-danger" style="width: {{status.countOfStartedState}}%">
+                                    <span class="sr-only">{{status.countOfStartedState}}% Complete (danger)</span>
+                                    {{status.countOfStartedState}}
                                 </div>
-                                <div class="progress-bar progress-bar-success" style="width: {{status.finished}}%">
-                                    <span class="sr-only">{{status.finished}}% Complete (success)</span>
-                                    {{status.finished}}
+                                <div class="progress-bar progress-bar-success" style="width: {{status.countOfFinishedState}}%">
+                                    <span class="sr-only">{{status.countOfFinishedState}}% Complete (success)</span>
+                                    {{status.countOfFinishedState}}
                                 </div>
-                                <div class="progress-bar progress-bar-danger" style="width: {{status.cancelled}}%">
-                                    <span class="sr-only">{{status.cancelled}}% Complete (danger)</span>
-                                    {{status.cancelled}}
+                                <div class="progress-bar progress-bar-danger" style="width: {{status.countOfCancelledState}}%">
+                                    <span class="sr-only">{{status.countOfCancelledState}}% Complete (danger)</span>
+                                    {{status.countOfCancelledState}}
                                 </div>
                             </div>
 
@@ -297,38 +297,38 @@ ul.dropdown-cart li .item-right button{
             }
 
         }
-          $scope.projects = [
-              {
-                  'id':'2',
-                  'title': 'Infy project',
-                  'description': 'first project',
-                  'state': 'planning'
-              },
-              {
-                  'id':'3',
-                  'title': 'Cognizant Technologies',
-                  'description': 'second project',
-                  'state': 'ongoing'
-              },
-              {
-                  'id':'4',
-                  'title': 'Wipro',
-                  'description': 'third project',
-                  'state': 'closed'
-              },
-              {
-                  'id':'5',
-                  'title': 'Tata Consultancy Services (TCS)',
-                  'description': 'fourth project',
-                  'state': 'ongoing'
-              },
-              {
-                  'id':'6',
-                  'title': 'HCL Technologies',
-                  'description': 'fifth project',
-                  'state': 'planning'
-              },
-          ]; 
+          // $scope.projects = [
+          //     {
+          //         'id':'2',
+          //         'title': 'Infy project',
+          //         'description': 'first project',
+          //         'state': 'planning'
+          //     },
+          //     {
+          //         'id':'3',
+          //         'title': 'Cognizant Technologies',
+          //         'description': 'second project',
+          //         'state': 'ongoing'
+          //     },
+          //     {
+          //         'id':'4',
+          //         'title': 'Wipro',
+          //         'description': 'third project',
+          //         'state': 'closed'
+          //     },
+          //     {
+          //         'id':'5',
+          //         'title': 'Tata Consultancy Services (TCS)',
+          //         'description': 'fourth project',
+          //         'state': 'ongoing'
+          //     },
+          //     {
+          //         'id':'6',
+          //         'title': 'HCL Technologies',
+          //         'description': 'fifth project',
+          //         'state': 'planning'
+          //     },
+          // ]; 
         $scope.addRow = function () {
             $scope.projects.push({'Title': $scope.title, 'Description': $scope.description, 'State': $scope.state});
             $scope.title = '';
@@ -355,7 +355,8 @@ ul.dropdown-cart li .item-right button{
 
             alert("get project status for project : "+ projectId);
 
-            $scope.status = {
+
+          /*  $scope.status = {
 
                 'new':'20',
                 'assigned':'20',
@@ -363,11 +364,11 @@ ul.dropdown-cart li .item-right button{
                 'finished':'20',
                 'cancelled':'20'
 
-            };
+            }; */
 
-           /* $http({
+           $http({
                 method: 'GET',
-                url: 'http://localhost:8080/api/v1/project/' + projectId + '/'
+                url: 'http://localhost:8080/api/v1/project/taskstatus' +projectId+ '/'
             }).success(function(response){
 
                 $scope.status = response;
@@ -376,7 +377,7 @@ ul.dropdown-cart li .item-right button{
             }).error(function(error){
 
                 alert("error: get Project status API failure");
-            });*/
+            });
         };
 
  	        $scope.loadProjects= function(){
