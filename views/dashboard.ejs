@@ -515,7 +515,7 @@ function drop(ev) {
                                                               
                                                                 <div class="form-group">
                                                                     <h4 style="color:black;"><strong>Change Assignee</strong></h4>
-                                                                   <select style="color:black;" name="selectedAssigneeId" ng-model="selectedAssigneeId" ng-change="saveAssignee(selectedAssigneeId,task.id)">
+                                                                   <select style="color:black;" name="selectedAssigneeId" ng-model="selectedAssigneeId" ng-change="saveAssignee(selectedAssigneeId,task.id,task.title)">
                                                                     <option style="color:black;" ng-repeat="assigneeObj in assigneeObjs" value="{{assigneeObj.assignee}}">{{assigneeObj.assignee}}</option>
                                                                     </select> 
                                                                 </div>
@@ -1025,7 +1025,7 @@ var projectStateValue = $("#projectState").val();
                         //     displayNew(title,desc,assignee,state,estimate,actual);  
                         //     return true;  
                         // }
-                        return state=="New";
+                        return state=="new";
                         
                     }
                     $scope.isAssigneed= function(title,description,assignee,state,estimate,actual) {
@@ -1089,12 +1089,40 @@ var projectStateValue = $("#projectState").val();
                       }
                       ];
 
-                    $scope.saveAssignee = function(assignee, id){
-                        alert("changed assignee to "+assignee +' and id is '+id);
+                    $scope.saveAssignee = function(assignee, id, title){
+                        alert("changed assignee to "+assignee +' and id is '+id+ ' and title is  '+title);
+
+                        var TaskId = id;
+                        var TaskTitle = title;
+                        var TaskAssignee = assignee;
+                        $http({
+                            method: 'PUT',
+                            url: 'http://localhost:8080/api/v1/tasks/'+TaskId+'/'+TaskTitle+'/'+TaskAssignee+'/'
+                            //tasks/{TaskId}/{TaskTitle}/{TaskAssignee}
+                        }).success(function(response){
+
+                            alert("change task assignee API SUCCESS");
+
+                        }).error(function(error){
+                            alert("Error : change task assignee failure");
+                        });
+
                     }
 
                     $scope.deleteTask = function(id){
                         alert("We can delete this task and id for task is "+id);
+
+                        $http({
+                            method: 'DELETE',
+                            url: 'http://localhost:8080/api/v1/tasks/'+TaskId+'/'
+                            //tasks/{TaskId}/
+                        }).success(function(response){
+
+                            alert("Delete task API SUCCESS");
+
+                        }).error(function(error){
+                            alert("Error : delete task API failure");
+                        });
 
                     }
 
