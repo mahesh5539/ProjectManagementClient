@@ -998,6 +998,7 @@ var projectStateValue = $("#projectState").val();
                    $scope.taskState="";
                          
                          alert("Task created successfully !!!");
+                         $route.reload();
                          
                  }).error(function(error){
                             alert("error : task ");
@@ -1016,6 +1017,7 @@ var projectStateValue = $("#projectState").val();
                 }).success(function(response){
 
                     alert("User invited successfully !!!");
+                    $route.reload();
 
                 }).error(function(error){
                     alert("invite user api call error");
@@ -1132,7 +1134,7 @@ var projectStateValue = $("#projectState").val();
                             url: 'http://localhost:8080/api/v1/tasks/'+id+'/'
                             //tasks/{TaskId}/
                         }).success(function(response){
-
+                            $route.reload();
                             alert("Delete task API SUCCESS");
 
                         }).error(function(error){
