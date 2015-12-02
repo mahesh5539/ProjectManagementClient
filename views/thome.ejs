@@ -216,7 +216,7 @@ ul.dropdown-cart li .item-right button{
         <td>
 
             <!-- Trigger the modal with a button -->
-            <p class="pull-right" data-toggle="modal" data-target="#myModall"><a ng-click="getProjectStatus(project.id)" href=""> <span class="glyphicon glyphicon-plus"></span> see progress</a></p>
+            <p data-toggle="modal" data-target="#myModall"><a ng-click="getProjectStatus(project.id)" href=""> <span class="glyphicon glyphicon-stats"></span> View Progress</a></p>
             <!-- Modal -->
             <div class="modal fade newproject" id="myModall" role="dialog">
                 <div class="modal-dialog">
@@ -266,13 +266,13 @@ ul.dropdown-cart li .item-right button{
     </tr>
 </table>
 
-<div id="footer">
-    <div class="container">
-        <p>&nbsp;</p>
-        <p class="lead">This is footer </p>
-    </div>
-</div>
 
+
+<nav  class="navbar navbar-collapse navbar-fixed-bottom">
+    <div class="container">
+        <p  style="color:black;" class="pull-right" style="color:white;"><b>Projectmate</b> &copy; Copyright-left-everything</p>
+    </div>
+</nav>
 <script>
 	var emailId = $("#emailValue").val();
     var helloApp = angular.module("projectHomeApp", []);
@@ -297,38 +297,38 @@ ul.dropdown-cart li .item-right button{
             }
 
         }
-          // $scope.projects = [
-          //     {
-          //         'id':'2',
-          //         'title': 'Infy project',
-          //         'description': 'first project',
-          //         'state': 'planning'
-          //     },
-          //     {
-          //         'id':'3',
-          //         'title': 'Cognizant Technologies',
-          //         'description': 'second project',
-          //         'state': 'ongoing'
-          //     },
-          //     {
-          //         'id':'4',
-          //         'title': 'Wipro',
-          //         'description': 'third project',
-          //         'state': 'closed'
-          //     },
-          //     {
-          //         'id':'5',
-          //         'title': 'Tata Consultancy Services (TCS)',
-          //         'description': 'fourth project',
-          //         'state': 'ongoing'
-          //     },
-          //     {
-          //         'id':'6',
-          //         'title': 'HCL Technologies',
-          //         'description': 'fifth project',
-          //         'state': 'planning'
-          //     },
-          // ]; 
+           $scope.projects = [
+               {
+                   'id':'2',
+                   'title': 'Infy project',
+                   'description': 'first project',
+                   'state': 'planning'
+               },
+               {
+                   'id':'3',
+                   'title': 'Cognizant Technologies',
+                   'description': 'second project',
+                   'state': 'ongoing'
+               },
+               {
+                   'id':'4',
+                   'title': 'Wipro',
+                   'description': 'third project',
+                   'state': 'closed'
+               },
+               {
+                   'id':'5',
+                   'title': 'Tata Consultancy Services (TCS)',
+                   'description': 'fourth project',
+                   'state': 'ongoing'
+               },
+               {
+                   'id':'6',
+                   'title': 'HCL Technologies',
+                   'description': 'fifth project',
+                   'state': 'planning'
+               },
+           ];
         $scope.addRow = function () {
             $scope.projects.push({'Title': $scope.title, 'Description': $scope.description, 'State': $scope.state});
             $scope.title = '';
