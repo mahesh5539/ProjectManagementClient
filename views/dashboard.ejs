@@ -1014,7 +1014,7 @@ var projectStateValue = $("#projectState").val();
 			var projectId = projectIdValue; 
                      $http({
                 method: 'GET',
-                url: 'http://localhost:8080/api/tc/tasks/'+projectId
+                url: 'http://localhost:8080/api/v1/tasks/'+projectId
                                               
                }).success(function(response){
 
@@ -1410,6 +1410,19 @@ var projectStateValue = $("#projectState").val();
                  //      }
                  //  ];
       
+   			   $http({
+       		     method: 'GET',
+                url: 'http://localhost:8080/api/v1/allAssignee/' + projectIdValue + '/'
+
+                           
+               }).success(function(response){
+                      $scope.assigneeObjs = response;
+					alert("success assigned");
+                         
+                 }).error(function(error){
+                            alert("error : task ");
+
+                 });   
              
     });
 
