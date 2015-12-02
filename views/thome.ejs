@@ -231,25 +231,25 @@ ul.dropdown-cart li .item-right button{
 
 
                             <div class="progress">
-                                <div class="progress-bar progress-bar-success" style="width:{{status.countOfNewState}}%">
-                                    <span class="sr-only">{{status.countOfNewState}}% Complete (success)</span>
-                                    {{status.countOfNewState}}
+                                <div class="progress-bar progress-bar-success" style="width:{{status1.countOfNewState}}%">
+                                    <span class="sr-only">{{status1.countOfNewState}}% Complete (success)</span>
+                                    {{status1.countOfNewState}}
                                 </div>
-                                <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: {{status.countOfAssignedState}}%">
-                                    <span class="sr-only">{{status.countOfAssignedState}}% Complete (warning)</span>
-                                    {{status.countOfAssignedState}}
+                                <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: {{status1.countOfAssignedState}}%">
+                                    <span class="sr-only">{{status1.countOfAssignedState}}% Complete (warning)</span>
+                                    {{status1.countOfAssignedState}}
                                 </div>
-                                <div class="progress-bar progress-bar-danger" style="width: {{status.countOfStartedState}}%">
-                                    <span class="sr-only">{{status.countOfStartedState}}% Complete (danger)</span>
-                                    {{status.countOfStartedState}}
+                                <div class="progress-bar progress-bar-danger" style="width: {{status1.countOfStartedState}}%">
+                                    <span class="sr-only">{{status1.countOfStartedState}}% Complete (danger)</span>
+                                    {{status1.countOfStartedState}}
                                 </div>
-                                <div class="progress-bar progress-bar-success" style="width: {{status.countOfFinishedState}}%">
-                                    <span class="sr-only">{{status.countOfFinishedState}}% Complete (success)</span>
-                                    {{status.countOfFinishedState}}
+                                <div class="progress-bar progress-bar-success" style="width: {{status1.countOfFinishedState}}%">
+                                    <span class="sr-only">{{status1.countOfFinishedState}}% Complete (success)</span>
+                                    {{status1.countOfFinishedState}}
                                 </div>
-                                <div class="progress-bar progress-bar-danger" style="width: {{status.countOfCancelledState}}%">
-                                    <span class="sr-only">{{status.countOfCancelledState}}% Complete (danger)</span>
-                                    {{status.countOfCancelledState}}
+                                <div class="progress-bar progress-bar-danger" style="width: {{status1.countOfCancelledState}}%">
+                                    <span class="sr-only">{{status1.countOfCancelledState}}% Complete (danger)</span>
+                                    {{status1.countOfCancelledState}}
                                 </div>
                             </div>
 
@@ -368,10 +368,10 @@ ul.dropdown-cart li .item-right button{
 
            $http({
                 method: 'GET',
-                url: 'http://localhost:8080/api/v1/project/taskstatus' +projectId+ '/'
+                url: 'http://localhost:8080/api/v1/project/taskstatus/' +projectId+ '/'
             }).success(function(response){
 
-                $scope.status = response;
+                $scope.status1 = response;
                 alert("success : get Project status API success");
 
             }).error(function(error){
