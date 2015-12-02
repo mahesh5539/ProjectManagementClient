@@ -222,6 +222,13 @@ th .column_content{
 
 <!-- Navbar Dropdown Cart - END -->
 <script>
+function updateTaskState(projectId,state,taskid){
+
+
+}
+
+
+
 function allowDrop(ev) {
     ev.preventDefault();
 }
@@ -231,6 +238,22 @@ function drag(ev) {
 }
 
 function drop(ev) {
+// call func to change db state
+// get the target node 
+//   ev.target
+
+
+
+
+// get current task//
+//var data = ev.dataTransfer.getData("Text");
+ // var abc = document.getElementById(data)
+
+
+
+
+
+   debugger;
     var data = ev.dataTransfer.getData("Text");
     ev.target.appendChild(document.getElementById(data));
     ev.preventDefault();
@@ -265,7 +288,7 @@ function drop(ev) {
   </head>
     <body ng-controller="TaskCtrl" ng-init="getAllTasks()">
         <input id="projectId" ng-model="ngprojectId" type="hidden" value="<%=projectID%>">
-
+		
 <!-- Navbar Dropdown Cart - START -->
 
 <div class="mix">
@@ -467,15 +490,49 @@ function drop(ev) {
                             <div ng-repeat="task in tasks">
                             
                                 <div ng-if="isNew(task.title, task.description, task.assignee, task.state, task.estimate, task.actual)">
-                            <div id="task1" class="taskborder" draggable="true" ondragstart="drag(event)">
+                            <div id="{{task.divId}}" class="taskborder" draggable="true" ondragstart="drag(event)">
                                 <div class="head" style="background-color: #286090; border-radius: 3%;">
                                     <span class="task_context">&nbsp;</span>
                                     <div class="task_tab">
-                                        <strong class="task_id" style="color: #FFFFFF">{{task.taskID}}</strong>
+                                        <strong class="task_id" style="color: #FFFFFF">ID {{task.id}}</strong>
                                     </div>
                                     <div class="assignee" style="color: #FFFFFF">
                                         <span>{{task.assignee}}</span>
-                                        <span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span>
+                                        <!-- Trial Starts -->
+                                                 <p style="position:absolute;margin-top:-20px;margin-left:75px;" data-toggle="modal" data-target="#editsaveTaskModal"><a style="color:white;"href=""> <span class="glyphicon glyphicon-cog"></span></a></p>
+                                                    <div class="modal fade editsaveTaskModal" id="editsaveTaskModal" role="dialog">
+                                                      <div class="modal-dialog">
+
+                                                    <!-- Modal content-->
+                                                    <div  class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            <h4 style="color:black;"class="modal-title">Edit or Delete Task <strong>{{task.title}}</strong></h4>
+                                                        </div>
+                                                        <div class="modal-body">
+
+                                                            <form role="form">
+                                                              
+                                                                <div class="form-group">
+                                                                    <h4 style="color:black;"><strong>Change Assignee</strong></h4>
+                                                                   <select style="color:black;" name="selectedAssigneeId" ng-model="selectedAssigneeId" ng-change="saveAssignee(selectedAssigneeId,task.id)">
+                                                                    <option style="color:black;" ng-repeat="assigneeObj in assigneeObjs" value="{{assigneeObj.assignee}}">{{assigneeObj.assignee}}</option>
+                                                                    </select> 
+                                                                </div>
+                                                                <button ng-click="deleteTask(task.id)" type="submit" class="btn btn-primary" data-dismiss="modal">Delete Task</button>
+                                                            </form>
+
+
+                                                        </div>
+                                                       <!-- <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        </div>-->
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        <!-- Trial Ends -->
+                                     <!--   <a ng-click="showDropdown(task.id,task.title,task.assignee)" href=""><span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span></a> -->
                                     </div>
 
                                 </div>
@@ -515,7 +572,7 @@ function drop(ev) {
                                     </div>
                                     <div class="assignee" style="color: #FFFFFF">
                                         <span>{{task.assignee}}</span>
-                                        <span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span>
+                                        <a ng-click="showDropdown(task.id,task.title,task.assignee)" href=""><span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span></a>
                                     </div>
 
                                 </div>
@@ -556,7 +613,7 @@ function drop(ev) {
                                     </div>
                                     <div class="assignee" style="color: #FFFFFF">
                                         <span>{{task.assignee}}</span>
-                                        <span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span>
+                                        <a ng-click="showDropdown(task.id,task.title,task.assignee)" href=""><span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span></a>
                                     </div>
 
                                 </div>
@@ -597,7 +654,7 @@ function drop(ev) {
                                     </div>
                                     <div class="assignee" style="color: #FFFFFF">
                                         <span>{{task.assignee}}</span>
-                                        <span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span>
+                                        <a ng-click="showDropdown(task.id,task.title,task.assignee)" href=""><span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span></a>
                                     </div>
 
                                 </div>
@@ -639,7 +696,7 @@ function drop(ev) {
                                     </div>
                                     <div class="assignee" style="color: #FFFFFF">
                                         <span>{{task.assignee}}</span>
-                                        <span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span>
+                                        <a ng-click="showDropdown(task.id,task.title,task.assignee)" href=""><span style="color:white; margin-left:15px;" class="glyphicon glyphicon-cog"></span></a>
                                     </div>
 
                                 </div>
@@ -827,6 +884,7 @@ function drop(ev) {
 
 <script>  
 var projectIdValue = $("#projectId").val(); 
+var projectStateValue = $("#projectState").val(); 
     //  function getStringUnique() {
     // var S4 = function() {
     //    return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
@@ -945,44 +1003,6 @@ var projectIdValue = $("#projectId").val();
                         
                  //    }
 
-                  // $scope.isNew = function(title,description,assignee,state,estimate,actual) {
-                  //       // if(state=='new'){
-                  //       //     displayNew(title,desc,assignee,state,estimate,actual);  
-                  //       //     return true;  
-                  //       // }
-                  //       return state=="new";
-                        
-                  //   }
-                  //   $scope.isAssigneed= function(title,description,assignee,state,estimate,actual) {
-                  //       // if(state=='assigned'){
-                  //       //     displayAssigned(title,desc,assignee,state,estimate,actual);
-                  //       //     return true;
-                  //       // }
-                  //       return state=="assigned";
-                        
-                  //   }
-                  //   $scope.isStarted= function(title,description,assignee,state,estimate,actual) {
-                  //       // if(state=='started'){
-                  //       //     displayStarted(title,desc,assignee,state,estimate,actual);
-                  //       //     return true;
-                  //       // }
-                  //       return state=="started";
-                        
-                  //   }
-                  //   $scope.isFinished= function(title,description,assignee,state,estimate,actual) {
-                  //       // if(state=='finished'){
-                  //       //     displayFinished(title,desc,assignee,state,estimate,actual);
-                  //       //     return true;
-                  //       // }
-                  //       return state=="finished";
-                  //   }
-                  //   $scope.isCancelled= function(title,description,assignee,state,estimate,actual) {
-                  //       // if(state=='cancelled'){
-                  //       //     displayCancelled(title,desc,assignee,state,estimate,actual);
-                  //       //     return true;
-                  //       // }
-                  //       return state=="cancelled";
-                  //   }
 			var projectId = projectIdValue; 
                      $http({
                 method: 'GET',
@@ -1037,32 +1057,76 @@ var projectIdValue = $("#projectId").val();
                  });        
 
                     };
+                  
+
+                     $scope.assigneeObjs = [
+                      { 
+                          'id':'1',
+                          'title': 'Infy project',
+                          'description': 'first project',
+                          'assignee': 'None',
+                          'state': 'new',
+                          'estimate': '2 days',
+                          'actual': '2 days'
+                      },
+
+                      {
+                          'id':'2',
+                          'title': 'Cognizant Tech',
+                          'description': 'second project',
+                          'assignee': 'Mahesh',
+                          'state': 'assigned',
+                          'estimate': '5 days',
+                          'actual': '5 days'
+                      }
+                      ];
+
+                    $scope.saveAssignee = function(assignee, id){
+                        alert("changed assignee to "+assignee +' and id is '+id);
+                    }
+
+                    $scope.deleteTask = function(id){
+                        alert("We can delete this task and id for task is "+id);
+
+                    }
 
 
-                 // $scope.tasks1 = [
+                 // $scope.tasks = [
                  //      { 
-                 //          'taskID':'1',
+                 //          'id':'1',
+                 //          'divId':'task12',
                  //          'title': 'Infy project',
-                 //          'desc': 'first project',
+                 //          'description': 'first project',
                  //          'assignee': 'None',
                  //          'state': 'new',
                  //          'estimate': '2 days',
                  //          'actual': '2 days'
                  //      },
-
+                 //      { 
+                 //          'id':'2',
+                 //          'divId':'task13',
+                 //          'title': 'Infy project',
+                 //          'description': 'first project',
+                 //          'assignee': 'Mahesh',
+                 //          'state': 'new',
+                 //          'estimate': '2 days',
+                 //          'actual': '2 days'
+                 //      },
                  //      {
-                 //          'taskID':'2',
+                 //          'id':'2',
+                 //          'divId':'task14',
                  //          'title': 'Cognizant Tech',
-                 //          'desc': 'second project',
+                 //          'description': 'second project',
                  //          'assignee': 'Mahesh',
                  //          'state': 'assigned',
                  //          'estimate': '5 days',
                  //          'actual': '5 days'
                  //      },
                  //       {
-                 //          'taskID':'2',
+                 //          'id':'2',
+                 //          'divId':'task15',
                  //          'title': 'sjsu proj',
-                 //          'desc': 'second project',
+                 //          'description': 'second project',
                  //          'assignee': 'Arjun',
                  //          'state': 'assigned',
                  //          'estimate': '5 days',
@@ -1071,27 +1135,30 @@ var projectIdValue = $("#projectId").val();
                      
 
                  //      {
-                 //          'taskID':'3',
+                 //          'id':'3',
+                 //          'divId':'task16',
                  //          'title': 'Wipro',
-                 //          'desc': 'third project',
+                 //          'description': 'third project',
                  //          'assignee': 'Arjun',
                  //          'state': 'started',
                  //          'estimate': '8 days',
                  //          'actual': '9 days'
                  //      },
                  //      {
-                 //          'taskID':'4',
+                 //          'id':'4',
+                 //          'divId':'task17',
                  //          'title': 'Tcs',
-                 //          'desc': 'fourth project',
+                 //          'description': 'fourth project',
                  //          'assignee': 'Dinesh',
                  //          'state': 'finished',
                  //          'estimate': '3 days',
                  //          'actual': '5 days'
                  //      },
                  //      {
-                 //          'taskID':'5',
+                 //          'id':'5',
+                 //          'divId':'task18',
                  //          'title': 'HCL Technologies',
-                 //          'desc': 'fifth project',
+                 //          'description': 'fifth project',
                  //          'assignee': 'Vaibhav',
                  //          'state': 'cancelled',
                  //          'estimate': '3 days',

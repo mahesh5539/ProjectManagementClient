@@ -43,8 +43,9 @@ router.get('/getDashboard', function(req, res) {
 router.get('/dashboard/:id', function(req, res) {
 	
 	var Id = req.params.id;
+	var state = req.params.pstate;
 	console.log("----user----"+Id);
-	  res.render('dashboard',{"projectID":Id});
+	  res.render('dashboard',{'projectID':Id});
 	});
 
 

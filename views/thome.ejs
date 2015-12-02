@@ -194,7 +194,7 @@ ul.dropdown-cart li .item-right button{
     </tr>
     <tr ng-repeat="project in projects  | filter: searchKeyword ">
 	     <td>
-            <a ng-click="getDashboard(project.id)" href= "">{{project.title}}</a>
+            <a ng-click="getDashboard(project.id,project.state)" href= "">{{project.title}}</a>
             <p hidden>{{project.id}}</p>
         </td>
         <td>
@@ -364,7 +364,7 @@ ul.dropdown-cart li .item-right button{
 
               
 
-               $scope.getDashboard= function(id){ 
+               $scope.getDashboard= function(id,state){ 
               
               $http({
                 method: 'GET',
