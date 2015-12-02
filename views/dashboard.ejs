@@ -1014,7 +1014,7 @@ var projectStateValue = $("#projectState").val();
 			var projectId = projectIdValue; 
                      $http({
                 method: 'GET',
-                url: 'http://localhost:8080/api/v1/tasks/'+projectId
+                url: 'http://localhost:8080/api/v1/tasks/'+projectId+'/'
                                               
                }).success(function(response){
 
@@ -1067,27 +1067,27 @@ var projectStateValue = $("#projectState").val();
                     };
                   
 
-                     $scope.assigneeObjs = [
-                      { 
-                          'id':'1',
-                          'title': 'Infy project',
-                          'description': 'first project',
-                          'assignee': 'None',
-                          'state': 'new',
-                          'estimate': '2 days',
-                          'actual': '2 days'
-                      },
+                     // $scope.assigneeObjs = [
+                     //  { 
+                     //      'id':'1',
+                     //      'title': 'Infy project',
+                     //      'description': 'first project',
+                     //      'assignee': 'None',
+                     //      'state': 'new',
+                     //      'estimate': '2 days',
+                     //      'actual': '2 days'
+                     //  },
 
-                      {
-                          'id':'2',
-                          'title': 'Cognizant Tech',
-                          'description': 'second project',
-                          'assignee': 'Mahesh',
-                          'state': 'assigned',
-                          'estimate': '5 days',
-                          'actual': '5 days'
-                      }
-                      ];
+                     //  {
+                     //      'id':'2',
+                     //      'title': 'Cognizant Tech',
+                     //      'description': 'second project',
+                     //      'assignee': 'Mahesh',
+                     //      'state': 'assigned',
+                     //      'estimate': '5 days',
+                     //      'actual': '5 days'
+                     //  }
+                     //  ];
 
                     $scope.saveAssignee = function(assignee, id, title){
                         alert("changed assignee to "+assignee +' and id is '+id+ ' and title is  '+title);
@@ -1100,7 +1100,7 @@ var projectStateValue = $("#projectState").val();
                             url: 'http://localhost:8080/api/v1/tasks/'+TaskId+'/'+TaskTitle+'/'+TaskAssignee+'/'
                             //tasks/{TaskId}/{TaskTitle}/{TaskAssignee}
                         }).success(function(response){
-
+                            $route.reload();
                             alert("change task assignee API SUCCESS");
 
                         }).error(function(error){
@@ -1114,7 +1114,7 @@ var projectStateValue = $("#projectState").val();
 
                         $http({
                             method: 'DELETE',
-                            url: 'http://localhost:8080/api/v1/tasks/'+TaskId+'/'
+                            url: 'http://localhost:8080/api/v1/tasks/'+id+'/'
                             //tasks/{TaskId}/
                         }).success(function(response){
 
@@ -1440,7 +1440,8 @@ var projectStateValue = $("#projectState").val();
       
    			   $http({
        		     method: 'GET',
-                url: 'http://localhost:8080/api/v1/allAssignee/' + projectIdValue + '/'
+                //url: 'http://localhost:8080/api/v1/allAssignee/' + projectIdValue + '/'
+                url: 'http://localhost:8080/api/v1/tasks/' + projectIdValue + '/'
 
                            
                }).success(function(response){
