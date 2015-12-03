@@ -110,14 +110,14 @@ ul.dropdown-cart li .item-right button{
 #newTaskBtn{
     position: relative;
     margin-top: -35px;
-    margin-left: 60%
+    margin-left: 55%
 }
 #mainboard{
     margin-top: 4%;
 }
 table{
     position: relative;
-    margin-left: 4%;
+    margin-left: 2%;
 }
 table th{
     border: 1px solid;
@@ -235,7 +235,7 @@ function updateTaskState(state,taskid)
                             // }),
                             success: function(data1, textStatus) {
                             
-                             alert("in success");
+                             //alert("in success");
                                                         
                             }
 
@@ -331,7 +331,7 @@ if(droptarget=='fifth_column'){
         <a href=""><span style="font-size:20px;color:#337ab7"class="glyphicon glyphicon-globe"></span></a>
     </div>
     <div style="color:white; position:absolute; margin-left:72%; margin-top:1%;"id="usernameDiv">
-       <p>User: mahesh5539</p> 
+       <p>User: vaioarjun@gmail.com</p> 
     </div>
 
     <div style="margin-top:1%"class="pull-right">
@@ -1012,7 +1012,7 @@ var projectStateValue = $("#projectState").val();
               var TaskActual = $scope.taskActual;
               var TaskState = 'new';
               var ProjectId= '1';
-              alert("inside task");
+              //alert("inside task");
               $http({
                 method: 'POST',
                 url: 'http://localhost:8080/api/v1/'+TaskTitle+'/'+TaskDescription+'/'+TaskAssignee+'/'+TaskState+'/'+ TaskEstimate+'/'+TaskActual+'/'+ProjectId+'/'
@@ -1027,7 +1027,7 @@ var projectStateValue = $("#projectState").val();
                    $scope.taskActual="";
                    $scope.taskState="";
                          
-                         alert("Task created successfully !!!");
+                         //alert("Task created successfully !!!");
                          
                          
                  }).error(function(error){
@@ -1176,18 +1176,18 @@ var projectStateValue = $("#projectState").val();
                      //  ];
 
                     $scope.saveAssignee = function(assignee, id, title){
-                        alert("changed assignee to "+assignee +' and id is '+id+ ' and title is  '+title);
+                        //alert("changed assignee to "+assignee +' and id is '+id+ ' and title is  '+title);
 
                         var TaskId = id;
                         var TaskTitle = title;
                         var TaskAssignee = assignee;
                         $http({
                             method: 'PUT',
-                            url: 'http://localhost:8080/api/v1/tasks/'+TaskId+'/'+TaskTitle+'/'+TaskAssignee+'/'
+                            url: 'http://localhost:8080/api/v1/tasks/'+TaskId+'/'+TaskTitle+'/'+TaskAssignee
                             //tasks/{TaskId}/{TaskTitle}/{TaskAssignee}
                         }).success(function(response){
                             
-                            alert("change task assignee API SUCCESS");
+                            //alert("change task assignee API SUCCESS");
 
                         }).error(function(error){
                             alert("Error : change task assignee failure");
@@ -1294,7 +1294,7 @@ var projectStateValue = $("#projectState").val();
                 url: 'http://localhost:8080/api/v1/tasks/' + projectIdValue + '/'                           
                }).success(function(response){
                       $scope.assigneeObjs = response;
-					alert("success assigned");
+					//alert("success assigned");
                          
                  }).error(function(error){
                             alert("error : task ");

@@ -280,7 +280,7 @@ ul.dropdown-cart li .item-right button{
     
         $scope.deleteProject = function (id) {
 
-           alert("sending delete request "+id);
+           //alert("sending delete request "+id);
             if (confirm("You want to delete selected project ???") == true) {
 
                 $http({
@@ -293,7 +293,7 @@ ul.dropdown-cart li .item-right button{
                     alert("error");
                 });
             } else {
-                alert("You pressed Cancel!");
+                //alert("You pressed Cancel!");
             }
 
         }
@@ -353,7 +353,7 @@ ul.dropdown-cart li .item-right button{
 
         $scope.getProjectStatus = function(projectId){
 
-            alert("get project status for project : "+ projectId);
+            //alert("get project status for project : "+ projectId);
 
 
           /*  $scope.status = {
@@ -372,7 +372,7 @@ ul.dropdown-cart li .item-right button{
             }).success(function(response){
 
                 $scope.status1 = response;
-                alert("success : get Project status API success");
+                //alert("success : get Project status API success");
 
             }).error(function(error){
 

@@ -342,13 +342,13 @@
        $scope.login = function(){ 
        var userName = $scope.loginuserName;
        var password = $scope.loginpassword;
-       alert("---userName----"+userName);
-       alert("----password---"+password);
+       //alert("---userName----"+userName);
+       //alert("----password---"+password);
         $http({
           method: 'GET',
               url: 'http://localhost:8080/api/v1/usersignin/' + userName + '/' + password
                }).success(function(response){            
-         	alert("---Success--Login--User-");
+         	//alert("---Success--Login--User-");
          	window.location = '/thome/' + userName;
          	//$window.location.href = '/thome/' + userName;
           }).error(function(error){
